@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>lexicalScope</title>
 </head>
+
 <body>
 
   <script type="text/javascript">
@@ -19,11 +21,11 @@
     function a1() {
       myVar1 = 5 - 3;
       b1();
-      alert("Q1 | a: " + myVar1);
+      alert("Q1 | a: " + myVar1); // Q1 | a: 2
     }
 
     function b1() {
-      alert("Q1 | b: " + myVar1);
+      alert("Q1 | b: " + myVar1); // Q1 | b: 2
     }
     a1();
 
@@ -35,14 +37,15 @@
     function a2() {
       var myVar2 = 5 - 3;
       b2();
-      alert("Q2 | a: " + myVar2);
+      alert("Q2 | a: " + myVar2); // Q2 | a: 2
     }
 
     function b2() {
-      alert("Q2 | b: " + myVar2);
+      alert("Q2 | b: " + myVar2); // Q2 | b: 1
     }
     a2();
 
   </script>
 </body>
+
 </html>
