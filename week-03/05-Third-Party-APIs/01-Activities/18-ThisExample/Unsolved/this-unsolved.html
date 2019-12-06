@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>This Example</title>
 </head>
+
 <body>
 
   <h1>Make sure to view the console to see the action!</h1>
@@ -13,16 +15,16 @@
     // EXAMPLE ONE:
     // --------------------------------------------------
     // What is "this" going to print?
-
     console.log(this);
+    // Window
 
 
     // EXAMPLE TWO:
     // --------------------------------------------------
     // What is "this" going to print?
-
     function myFunction() {
       console.log(this);
+      // Window
     }
     myFunction();
 
@@ -32,11 +34,12 @@
 
     var someObj = {
       name: "Red Hat",
-      say: function() {
+      say: function () {
         console.log(this.name);
       }
     };
     someObj.say();
+    // "Red Hat"
 
 
     // EXAMPLE FOUR (BONUS, TRICKY!):
@@ -45,10 +48,10 @@
 
     var myObj = {
       name: "",
-      yell: function() {
+      yell: function () {
         this.name = "Star Powerup";
 
-        var changeName = function(newName) {
+        var changeName = function (newName) {
           this.name = newName;
         };
         changeName("Blue Shell");
@@ -56,6 +59,7 @@
       }
     };
     myObj.yell();
+    // { name: "Star Powerup", yell: f() }
 
 
     // EXAMPLE FIVE (BONUS, TRICKY!):
@@ -64,13 +68,13 @@
 
     var myObj = {
       name: "",
-      yell: function() {
+      yell: function () {
 
         // This line is important!
         var thisObject = this;
 
         this.name = "Star Powerup";
-        var changeName = function(newName) {
+        var changeName = function (newName) {
           thisObject.name = newName;
         };
         changeName("Blue Shell");
@@ -78,7 +82,9 @@
       }
     };
     myObj.yell();
+    // { name: "Blue Shell", yell: f() }
 
   </script>
 </body>
+
 </html>
