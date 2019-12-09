@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Scope Activity #1</title>
 </head>
+
 <body>
   <h1>Scope Activity #1</h1>
   <h2>✨Open the console to see the magic!✨</h2>
@@ -16,18 +18,20 @@
 
       // what is the scope of this function and the scope of y?
       function inside(y) {
-
-        console.log(x + y);
+        console.log("Inside", x + y);
       }
-
       return inside;
     }
 
     // what is happening here?
+    // call outside function and store the return value to insideOut variable.
+    // outside() returns a function so insideOut is a function.
     var insideOut = outside();
 
     // What does this return?
-    insideOut(2);
+    // It calls the inside() that is defined in outsite.
+    console.log("Value:", insideOut(2));
+
 
     // Uncaught ReferenceError: x is not defined.
     // How does insideOut have access to x?
@@ -36,4 +40,5 @@
   </script>
 
 </body>
+
 </html>
