@@ -16,9 +16,19 @@
   <script type="text/javascript">
     // Things to accomplish:
     // Get an API Key from OpenWeatherMap API
+    // 3a8b1bba9fba18357210e6dda4af6c25
     // Create an AJAX call to retrieve data Log the data in console
-    // Log the data in HTML
-    // Scream Ushindi (victory in Swahili)! at the top of your lungs
+    var code = 524901;
+    var queryURL = "https://samples.openweathermap.org/data/2.5/forecast?id=" + code + "&appid=3a8b1bba9fba18357210e6dda4af6c25";
+    console.log(queryURL);
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function (response) {
+      // console.log(response);
+      // Log the data in HTML
+      // Scream Ushindi (victory in Swahili)! at the top of your lungs
+    });
   </script>
 
 </body>

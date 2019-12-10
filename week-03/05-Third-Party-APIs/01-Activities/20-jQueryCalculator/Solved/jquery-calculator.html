@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>jQuery Calculator</title>
@@ -14,6 +15,7 @@
   <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
 
   <div class="jumbotron">
@@ -74,7 +76,7 @@
 
   <script type="text/javascript">
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
       // Make our variables global to the runtime of our application
       var firstNumber = 0;
@@ -96,7 +98,7 @@
         $("#first-number, #second-number, #operator, #result").empty();
       }
 
-      $(".number").on("click", function() {
+      $(".number").on("click", function () {
 
         // Check if we've already run a calculation, if so... we'll just.
         if (isCalculated) {
@@ -115,25 +117,15 @@
         }
 
       });
-      $(".operator").on("click", function() {
+      $(".operator").on("click", function () {
 
-        // Check if a first number has already been selected
-        // Or we've already run a calculation, if so we just exit.
-        if (!firstNumber || isCalculated) {
-          return false;
-        }
-
-        // Set isOperatorChosen to true so we start writing to secondNumber
+        if (!firstNumber || isCalculated) return false;
         isOperatorChosen = true;
-
-        // Store off the operator
         operator = $(this).val();
-
-        // Set the HTML of the #operator to the text of what was clicked
         $("#operator").text($(this).text());
 
       });
-      $(".equal").on("click", function() {
+      $(".equal").on("click", function () {
 
         // If we already clicked equal, don't do the calculation again
         if (isCalculated) {
@@ -149,30 +141,15 @@
 
         // Based on the operator that was chosen.
         // Then run the operation and set the HTML of the result of that operation
-        if (operator === "plus") {
-          result = firstNumber + secondNumber;
-        }
-
-        else if (operator === "minus") {
-          result = firstNumber - secondNumber;
-        }
-
-        else if (operator === "times") {
-          result = firstNumber * secondNumber;
-        }
-
-        else if (operator === "divide") {
-          result = firstNumber / secondNumber;
-        }
-
-        else if (operator === "power") {
-          result = Math.pow(firstNumber, secondNumber);
-        }
-
+        if (operator === "plus") result = firstNumber + secondNumber;
+        else if (operator === "minus") result = firstNumber - secondNumber;
+        else if (operator === "times") result = firstNumber * secondNumber;
+        else if (operator === "divide") result = firstNumber / secondNumber;
+        else if (operator === "power") result = Math.pow(firstNumber, secondNumber);
         $("#result").text(result);
 
       });
-      $(".clear").on("click", function() {
+      $(".clear").on("click", function () {
 
         // Call initializeCalculater so we can reset the state of our app
         initializeCalculator();
@@ -183,7 +160,8 @@
       initializeCalculator();
     });
 
-</script>
+  </script>
 
 </body>
+
 </html>

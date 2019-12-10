@@ -5,6 +5,7 @@ function loadPage() {
   console.log("loading page...");
   hours.forEach(hourBlock => {
     var hourBlock = $("<div>");
+    var hour;
     container.append(hourBlock);
   });
 }

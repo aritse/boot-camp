@@ -43,13 +43,14 @@
         var movie = $(this).attr("data-name");
         var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
         $.ajax({ url: queryURL, method: "GET" }).then(function (response) {
-          var poster = $("<img>");
-          poster.attr("src", response.Poster);
-          poster.attr("alt", movie);
+
+          var title = $("<h2>").text(response.Title);
+          var poster = $("<img>").attr({ "src": response.Poster, "alt": movie });
           var rate = $("<div>").text(response.Rated);
           var released = $("<div>").text(response.Released);
           var plot = $("<div>").text(response.Plot);
-          var movieDiv = $("<div>").append(poster, rate, released, plot);
+
+          var movieDiv = $("<div>").append(title, poster, rate, released, plot);
           $("#movies-view").prepend(movieDiv);
         });
       }

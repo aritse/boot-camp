@@ -38,7 +38,6 @@
         $("#buttons-view").empty();
         movies.forEach(movie => {
           var button = $("<button>").text(movie);
-          button.attr("data-movie", movie);
           $("#buttons-view").append(button);
         });
       }
