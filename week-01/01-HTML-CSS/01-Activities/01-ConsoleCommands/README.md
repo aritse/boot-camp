@@ -8,11 +8,11 @@
   - A new HTML file with the name of first-day.html
     notepad first-day.html
   - Open the current folder containing the new HTML file.
-    code first-day.html
+    code first_day_stuff
 
 ## BONUS
 
 - Create multiple directories/folders with the names `one_folder` and `second_folder` in one command.
   for %i in (one_folder second_folder) do mkdir %i
 - Create multiple files with the names `one.html` and `two.html` in one command in the first_day_stuff directory.
-  for %i in (one.html two.html) do notepad %i
+  for %i in (one.html two.html) do notepad first_day_stuff\%i
