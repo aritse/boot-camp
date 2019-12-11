@@ -4,11 +4,11 @@
 
 - From the Terminal/Console and using only the command line, create the following:
   - A new folder with the name of first_day_stuff
-    mkdir first_day_stuff
+    `mkdir first_day_stuff`
   - A new HTML file with the name of first-day.html
-    notepad first_day_stuff\first-day.html
+    `notepad first_day_stuff\first-day.html`
   - Open the current folder containing the new HTML file.
-    code first_day_stuff
+    `code first_day_stuff`
 
 ## BONUS
 
