@@ -1,25 +1,23 @@
-const maths = require("./maths");
+var maths = require('./maths');
 
-const operation = process.argv[2];
-const nums = process.argv.splice(3);
-const a = parseInt(nums[0]);
-const b = parseInt(nums[1]);
-var result;
+var operation = process.argv[2];
 
-switch (operation) {
-  case "sum":
-    result = maths.sum(a, b);
+var numOne = parseInt(process.argv[3]);
+var numTwo = parseInt(process.argv[4]);
+
+switch(operation) {
+  case 'sum':
+    console.log(maths.sum(numOne, numTwo));
     break;
-  case "difference":
-    result = maths.difference(a, b);
+  case 'difference':
+    console.log(maths.difference(numOne, numTwo));
     break;
-  case "product":
-    result = maths.product(a, b);
+  case 'product':
+    console.log(maths.product(numOne, numTwo));
     break;
-  case "quotient":
-    result = maths.quotient(a, b);
+  case 'quotient':
+    console.log(maths.quotient(numOne, numTwo));
     break;
   default:
-    throw "invalid operation";
+    console.log("Check your maths!");
 }
-console.log(result);

@@ -1,3 +1,18 @@
-const args = process.argv;
-const result = args[2] == args[3] ? true : false;
-console.log(result);
+var a = process.argv[2];
+var b = process.argv[3];
+
+// using a conditional statement
+if (a === b) {
+  console.log(true);
+} else {
+  console.log(false);
+}
+
+//using a ternary operator
+console.log(a === b ? "apples" : "bananas")
+
+// comparing variables
+console.log(a === b);
+
+// comparing argument values directly
+console.log(process.argv[2] === process.argv[3]);

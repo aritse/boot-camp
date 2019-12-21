@@ -1,7 +1,13 @@
-const fs = require("fs");
+var fs = require("fs");
 
-const data = process.argv[2];
-fs.appendFile("log.txt", data + "\n", function(err) {
-  if (err) throw err;
-  console.log("success");
+// we add a newline character to the command line argument
+fs.appendFile("log.txt", process.argv[2] + '\n', function(err) {
+
+  if (err) {
+    console.log(err);
+  }
+  else {
+    console.log("Commit logged!");
+  }
+
 });
