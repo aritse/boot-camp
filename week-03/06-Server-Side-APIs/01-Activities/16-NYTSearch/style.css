@@ -1,0 +1,56 @@
+header {
+  background-color: navy;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: xx-large;
+  font-family: "Times New Roman", Times, serif;
+}
+
+img {
+  width: 22px;
+}
+footer {
+  text-align: center;
+}
+
+label {
+  display: block;
+}
+
+input {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.search-parameters {
+  max-width: 60vw;
+  margin: 0 auto;
+  margin-top: 10px;
+  border: 2px solid black;
+}
+
+.top-articles {
+  max-width: 60vw;
+  margin: 0 auto;
+  margin-top: 10px;
+  border: 2px solid black;
+}
+
+#search-term-div {
+  margin-top: 10px;
+}
+
+.search-input {
+  padding: 10px;
+}
+
+.buttons {
+  margin: 0 auto;
+  padding: 10px;
+}
+
+h2 {
+  padding: 10px;
+}

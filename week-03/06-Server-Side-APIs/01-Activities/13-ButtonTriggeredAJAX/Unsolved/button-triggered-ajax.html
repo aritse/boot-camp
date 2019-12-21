@@ -11,28 +11,21 @@
     <button data-person="arnold schwarzenegger">
       I'll be back
     </button>
+    <button data-person="genghis">
+      If you're afraid - don't do it, - if you're doing it - don't be afraid!
+    </button>
+
+    <button data-person="albert einstein">
+      Any fool can know. The point is to understand.
+    </button>
+
     <button data-person="michael j fox">
       My happiness grows in direct proportion to my acceptance,
       and in inverse proportion to my expectations.
     </button>
-
-    <!-- STEP ONE: Open this file in the browser and click on the buttons. Watch what happens -->
-
-    <!-- STEP TWO: between the dashed lines below
-            * add three more buttons
-            * add a data-person attribute of famous people you know
-            * with a quote said by them -->
-
-    <!-- **************************************** -->
-
-    <!-- YOUR BUTTONS GO HERE!!!!!! Delete this comment and put your buttons here.  -->
-
-    <!-- **************************************** -->
-
-
-    <!-- STEP THREE: open this file in the browser and click on your buttons. If they don't work, then fix your buttons -->
-
-    <!-- STEP FOUR: go over the JavaScript with your partners, and explain the lines of code to each other. -->
+    <button data-person="oscar wilde">
+      Be yourself; everyone else is already taken.
+    </button>
 
   </div>
 
@@ -41,7 +34,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
-    $("button").on("click", function() {
+    $("button").on("click", function () {
       var person = $(this).attr("data-person");
       var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         person + "&api_key=dc6zaTOxFJmzC&limit=10";
@@ -50,7 +43,7 @@
         url: queryURL,
         method: "GET"
       })
-        .then(function(response) {
+        .then(function (response) {
           var results = response.data;
 
           for (var i = 0; i < results.length; i++) {

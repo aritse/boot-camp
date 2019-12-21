@@ -7,8 +7,18 @@ const readFileAsync = util.promisify(fs.readFile);
 
 const config = { headers: { accept: "application/json" } };
 
-axios.get("https://icanhazdadjoke.com/", config)
-  .then(function(res) {
+// axios.get("https://icanhazdadjoke.com/", config).then(({ data }) => {
+//   appendFileAsync("jokes.txt", data.joke + "\n").then(() => {
+//     readFileAsync("jokes.txt", "utf-8").then(data => {
+//       console.log(data);
+//     });
+//   });
+// });
 
-    console.log(res.data);
+axios.get("https://icanhazdadjoke.com/", config).then(({ data }) => {
+  appendFileAsync("jokes.txt", data.joke + "\n").then(() => {
+    readFileAsync("jokes.txt", "utf-8").then(data => {
+      console.log(data);
+    });
   });
+});
