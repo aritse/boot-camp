@@ -1,0 +1,31 @@
+button:hover {
+  background-color: red;
+}
+
+button:active {
+  background-color: teal;
+}
+
+button:default {
+  background-color: seagreen;
+}
+
+button:focus {
+  background-color: snow;
+}
+
+a:link {
+  color: darkblue;
+}
+
+a:visited {
+  color: pink;
+}
+
+a:hover {
+  color: yellow;
+}
+
+a:active {
+  color: tomato;
+}
