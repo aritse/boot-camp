@@ -3,3 +3,9 @@
  **/
 
 /* Add in the Google Fonts of your choice */
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Roboto", sans-serif;
+}
