@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sushi Prompt - Unsolved</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+
+    // Write code here!
+    let response = confirm('What do you like sushi?');
+    if (response) {
+      let response2 = prompt("What kind of sushi do you like?");
+      while (!response2) {
+        response2 = prompt("What kind of sushi do you like?");
+      }
+      alert("You like " + response2 + " sushi");
+    } else {
+      alert("You don't like sushi");
+    }
+
+  </script>
+
+</body>
+
+</html>
