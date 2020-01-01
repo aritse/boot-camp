@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Application</title>
+</head>
+
+<body>
+
+    <script>
+        if (window.navigator.platform === "Win32") alert("Welcome, Windows user!");
+        else alert("Welcome, Mac user!");
+        window.navigator.geolocation.getCurrentPosition(loc => {
+            if (loc.coords.longitude > 90) window.location.href = "east.html";
+            else window.location.href = "west.html";
+        });
+    </script>
+</body>
+
+</html>

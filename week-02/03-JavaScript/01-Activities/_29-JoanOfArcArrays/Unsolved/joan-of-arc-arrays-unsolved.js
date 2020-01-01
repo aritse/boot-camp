@@ -9,3 +9,8 @@ var joanOfArcInfoValues = [
   "Took an arrow to the shoulder and a crossbow bolt to the thigh while trying to liberate Paris.",
   "Stands for French unity and nationalism."
 ];
+
+var input = "Real Name";
+
+var index = joanOfArcInfoParts.indexOf(input);
+var valueIndex = joanOfArcInfoValues[index];
