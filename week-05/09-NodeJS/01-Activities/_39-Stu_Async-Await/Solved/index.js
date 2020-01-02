@@ -6,15 +6,24 @@ const writeFileAsync = util.promisify(fs.writeFile);
 
 async function combineAnimals() {
   try {
+    let animal;
     let animals = [];
-    let animal = await readFileAsync("cat.json");
-    animals.push(JSON.parse(animal));
+
+    animal = await readFileAsync("cat.json");
+    animal = JSON.parse(animal);
+    animals.push(animal);
+
     animal = await readFileAsync("dog.json");
-    animals.push(JSON.parse(animal));
+    animal = JSON.parse(animal);
+    animals.push(animal);
+
     animal = await readFileAsync("hamster.json");
-    animals.push(JSON.parse(animal));
+    animal = JSON.parse(animal);
+    animals.push(animal);
+
     animal = await readFileAsync("goldfish.json");
-    animals.push(JSON.parse(animal));
+    animal = JSON.parse(animal);
+    animals.push(animal);
 
     writeFileAsync("combined.json", JSON.stringify(animals, null, 2));
   } catch (err) {
