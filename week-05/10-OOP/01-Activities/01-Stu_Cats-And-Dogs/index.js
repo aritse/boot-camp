@@ -1,22 +1,15 @@
-let dog = {
-  raining: true,
-  noise: "Woof!",
-  makeNoise: function() {
+function Animal(raining, noise) {
+  this.raining = raining;
+  this.noise = noise;
+  this.makeNoise = () => {
     if (this.raining) {
       console.log(this.noise);
     }
-  }
-};
+  };
+}
 
-let cat = {
-  raining: true,
-  noise: "Meow!",
-  makeNoise: function() {
-    if (this.raining) {
-      console.log(this.noise);
-    }
-  }
-};
+let dog = new Animal(true, "Woof!");
+let cat = new Animal(true, "Meow!");
 
 dog.makeNoise();
 cat.makeNoise();
