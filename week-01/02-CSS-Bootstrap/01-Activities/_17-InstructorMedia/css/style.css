@@ -59,6 +59,9 @@ body {
   is either 768px or less.
 */
 @media screen and (max-width: 768px) {
+  #my-nav > nav {
+    justify-content: center !important;
+  }
   /* The body's bg color will be #333 */
   body {
     background-color: #333;
