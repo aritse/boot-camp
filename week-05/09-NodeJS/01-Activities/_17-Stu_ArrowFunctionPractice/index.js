@@ -1,71 +1,54 @@
 // 1. funnyCase makes each letter in a string the opposite case as the one before
-var funnyCase = string => {
-  var newString = "";
-  for (var i = 0; i < string.length; i++) {
-    if (i % 2 === 0) newString += string[i].toLowerCase();
-    else newString += string[i].toUpperCase();
-  }
-  return newString;
+const funnyCase = s => {
+  let t = "";
+  for (let i = 0; i < s.length; i++) t += i % 2 > 0 ? s[i].toUpperCase() : s[i].toLowerCase();
+  return t;
 };
-
-// Prints `yOu cAn't jUsT Do wHaTeVeR YoU WaNt aLl tHe tImE!`
-console.log(funnyCase("You can't just do whatever you want all the time!"));
+console.log(funnyCase("You can't just do whatever you want all the time!")); // `yOu cAn't jUsT Do wHaTeVeR YoU WaNt aLl tHe tImE!`
 
 // --------------------------------------------------------------------------
-
 // 2. Map lets you loop over an array and modify the elements inside
-var map = (arr, cb) => {
-  var result = [];
-  for (var index = 0; index < arr.length; index++) {
-    var currentElement = arr[index];
-    result.push(cb(currentElement, index));
-  }
+const map = (A, cb) => {
+  const result = [];
+  for (let i = 0; i < A.length; i++) result.push(cb(A[i], i));
   return result;
 };
 
-var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-var doubled = map(numbers, element => element * 2);
-
-// Prints `[ 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 ]`
-console.log(doubled);
+const n = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const doubled = map(n, element => element * 2);
+console.log(doubled); // `[ 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 ]`
 
 // --------------------------------------------------------------------------
-
 // 3. filter lets you loop over an array and remove elements
-var filter = (arr, cb) => {
-  var result = [];
-  for (var index = 0; index < arr.length; index++) {
-    var currentElement = arr[index];
-    if (cb(currentElement, index)) {
-      result.push(currentElement);
+const filter = (A, cb) => {
+  const result = [];
+  for (let i = 0; i < A.length; i++) {
+    if (cb(A[i], i)) {
+      result.push(A[i]);
     }
   }
   return result;
 };
 
-var evenNumbers = filter(numbers, function(currentElement) {
-  return currentElement % 2 === 0;
-});
-
-// Prints `[ 2, 4, 6, 8, 10 ]`
-console.log(evenNumbers);
+const even = filter(n, currentElement => currentElement % 2 === 0);
+console.log(even); // `[ 2, 4, 6, 8, 10 ]`
 
 // --------------------------------------------------------------------------
-
 // 4. netflixQueue is an object for managing your netflix queue
-var netflixQueue = {
+const netflixQueue = {
   queue: ["Mr. Nobody", "The Matrix", "Eternal Sunshine of the Spotless Mind", "Fight Club"],
   watchMovie: function() {
     this.queue.pop();
   },
+
   addMovie: function(movie) {
     this.queue.unshift(movie);
   },
+
   printQueue: function() {
-    var list = "";
-    for (var i = this.queue.length - 1; i >= 0; i--) {
-      var currentMovie = this.queue[i];
+    let list = "";
+    for (let i = this.queue.length - 1; i >= 0; i--) {
+      const currentMovie = this.queue[i];
       list += this.queue.length - i + ". " + currentMovie + "\n";
     }
     console.log(list);

@@ -1,0 +1,16 @@
+{
+  "name": "33-Stu_Axios",
+  "version": "1.0.0",
+  "description": "In this activity you will utilize the axios library to make a request to the Github API and save a list of all of your repositories.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "inquirer": "^7.0.1"
+  }
+}
