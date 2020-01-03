@@ -1,0 +1,18 @@
+{
+  "name": "_09-Stu_TDD",
+  "version": "1.0.0",
+  "description": "In this activity you will write tests outlining the expected functionality for application code that haven't been implemented yet.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^24.9.0"
+  }
+}
