@@ -7,7 +7,4 @@ console.log(copy);
 // You should still be able to pass in any number of arguments. Run the code first in your console to see the functionality.
 
 const add = (...nums) => nums.reduce((sum, n) => sum + n, 0);
-
 console.log(add(1, 2, 3)); // 6
-
-// code below here
