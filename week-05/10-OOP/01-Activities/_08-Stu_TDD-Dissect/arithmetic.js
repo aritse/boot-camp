@@ -3,15 +3,11 @@ function Arithmetic(number = 0) {
 }
 
 Arithmetic.prototype.plus = function(num = 0) {
-  const newNumber = this.number + num;
-
-  return new Arithmetic(newNumber);
+  return new Arithmetic(this.number + num);
 };
 
 Arithmetic.prototype.minus = function(num = 0) {
-  const newNumber = this.number - num;
-
-  return new Arithmetic(newNumber);
+  return new Arithmetic(this.number - num);
 };
 
 Arithmetic.prototype.value = function() {
