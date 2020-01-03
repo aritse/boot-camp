@@ -1,6 +1,43 @@
-<!DOCTYPE html>
+const inquirer = require("inquirer");
+const fs = require("fs");
+const util = require("util");
+
+const writeFileAsync = util.promisify(fs.writeFile);
+
+async function create() {
+  try {
+    const response = await inquirer.prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "What is your name?"
+      },
+      {
+        type: "input",
+        name: "location",
+        message: "What is your location?"
+      },
+      {
+        type: "input",
+        name: "bio",
+        message: "Tell about yourself (age, sex, hobby)"
+      },
+      {
+        type: "input",
+        name: "linkedin",
+        message: "What is your LinkedIn username?"
+      },
+      {
+        type: "input",
+        name: "github",
+        message: "What is your GitHub username?"
+      }
+    ]);
+
+    //#region HTML
+    const html = `
+    <!DOCTYPE html>
       <html lang="en">
-      
       <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,13 +46,16 @@
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
       </head>
-      
       <body>
           <div class="container">
               <div class="row">
                   <div class="col">
                       <div class="jumbotron">
-                          <h1 id="name">Ariadsf;alkdsjf</h1>
+                      <h1 id="name">${response.name}</h1>
+                      <h1 id="name">${response.location}</h1>
+                      <h1 id="name">${response.bio}</h1>
+                      <a href="https://www.linkedin.com/in/${response.linkedin}">LinkedIn</a>
+                      <a href="https://github.com/${response.github}">GitHub</a>
                       </div>
                   </div>
               </div>
@@ -30,3 +70,15 @@
       </body>
       
       </html>
+      `;
+    //#endregion
+
+    writeFileAsync("index.html", html)
+      .then(() => console.log("Success"))
+      .catch(err => console.log("Failure"));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+create();
