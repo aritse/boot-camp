@@ -1,14 +1,8 @@
 // 1. const can be used for values which we will not reassign
-
-const age = 25;
-
-age++; // TypeError: Assignment to constant variable.
-
-// ==========================================================================
+// const age = 25;
+// age++; // TypeError: Assignment to constant variable.
 
 // const name = "";
-
-
 // name = "Cherie"; // TypeError: Assignment to constant variable.
 
 // ==========================================================================
@@ -22,13 +16,10 @@ age++; // TypeError: Assignment to constant variable.
 // This works because by updating an array's contents, we aren't changing the reference to the underlying array
 // console.log(beatles); // Prints `["John", "Paul", "Ringo", "George"]`
 
-// console.log(beatles);
-
 // const person = { name: "Brianna", age: 11 };
 // person.age++;
 // person.favoriteMovie = "Spider-Man";
 // person.name = "Carla";
-
 // console.log(person); // Prints `{ name: 'Carla', age: 12, favoriteMovie: 'Spider-Man' }`
 
 // ==========================================================================
@@ -42,10 +33,9 @@ age++; // TypeError: Assignment to constant variable.
 // };
 
 // item.price = "$1.99";
-
 // console.log(item);
 
-// const item = {
+// item = {
 //   id: 11,
 //   title: "Underwater Basket-Weaving Shoes",
 //   price: "$101.43"
@@ -53,11 +43,6 @@ age++; // TypeError: Assignment to constant variable.
 
 // const ninjaTurtles = [];
 
-// The same rules apply to arrays, we can MODIFY them, but not completely reassign them
+// // The same rules apply to arrays, we can MODIFY them, but not completely reassign them
 
-// ninjaTurtles = [
-//   "Michaelangelo",
-//   "Leonardo",
-//   "Raphael",
-//   "Donatello"
-// ]; // TypeError: Assignment to constant variable.
+// ninjaTurtles = ["Michaelangelo", "Leonardo", "Raphael", "Donatello"]; // TypeError: Assignment to constant variable.
