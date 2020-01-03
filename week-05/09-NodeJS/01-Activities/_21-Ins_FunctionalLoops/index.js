@@ -7,33 +7,20 @@ const moviePatrons = [
   { name: "Malcolm", age: 15 }
 ];
 
-// 1.
-
-// forEach is a functional way of iterating through an array without a for-loop
-
+// 1. forEach is a functional way of iterating through an array without a for-loop
 moviePatrons.forEach(patron => console.log(patron.age));
 
-// 2.
-
-// Filter returns a new array containing only elements whose callback returns a truthy value
-
+// 2. filter returns a new array containing only elements whose callback returns a truthy value
 const canWatchRatedR = moviePatrons.filter(patron => patron.age > 17);
-
 console.log(canWatchRatedR);
 
-// 3.
-
-// Map returns a brand new array the same length as the first. Each element is passed into the callback.
+// 3. map returns a brand new array the same length as the first. Each element is passed into the callback.
 // Whatever is returned from the callback at each iteration is what goes into that index of the new array
-
 const cardedMoviePatrons = moviePatrons.map(patron => {
-  if (patron.age >= 17) {
-    patron.canWatchRatedR = true;
-  } else {
-    patron.canWatchRatedR = false;
-  }
+  if (patron.age >= 17) patron.canWatchRatedR = true;
+  else patron.canWatchRatedR = false;
+
   return patron;
 });
-
 console.log("Carded Movie Patrons: ");
 console.log(cardedMoviePatrons);

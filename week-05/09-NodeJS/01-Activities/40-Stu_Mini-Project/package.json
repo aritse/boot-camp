@@ -1,7 +1,7 @@
 {
-  "name": "unsolved",
+  "name": "40-stu_mini-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "In this activity you will build a command line tool that generates and HTML portfolio page from user input.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.0",
-    "inquirer": "^6.5.0"
+    "inquirer": "^7.0.1"
   }
 }
