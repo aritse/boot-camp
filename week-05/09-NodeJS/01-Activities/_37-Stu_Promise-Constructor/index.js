@@ -1,8 +1,7 @@
 const waitFor = seconds => {
   return new Promise((resolve, reject) => {
-    if (isNaN(seconds) || seconds < 1) {
-      return reject("failure");
-    }
+    if (isNaN(seconds) || seconds < 1) return reject(`invalid parameter: ${seconds}`);
+
     setTimeout(() => {
       resolve("success");
     }, seconds * 1000);
