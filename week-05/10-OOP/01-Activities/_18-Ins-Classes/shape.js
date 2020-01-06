@@ -12,5 +12,4 @@ class Shape {
 }
 
 const shape = new Shape(25, 25);
-
 shape.printInfo();
