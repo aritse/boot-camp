@@ -1,8 +1,31 @@
 class Store {
-  constructor(name, stock, revenue = 0) {
+  constructor(name, stock) {
     this.name = name;
     this.stock = stock;
-    this.revenue = revenue;
+    this.revenue = 0;
+  }
+
+  processProductSale(name) {
+    this.stock.forEach(item => {
+      if (item.name === name) {
+        if (item.count > 0) {
+          item.count--;
+          this.revenue += item.price;
+          console.log(`Purchased ${item.name} for ${item.price}`);
+        } else {
+          console.log(`Sorry, ${item.name} is out of stock!`);
+        }
+      }
+    });
+  }
+
+  replenishStock(name, count) {
+    this.stock.forEach(item => {
+      if (item.name === name) {
+        item.count += count;
+        console.log(`Replenished ${item.name} by ${item.count}`);
+      }
+    });
   }
 
   printRevenue() {
@@ -11,31 +34,6 @@ class Store {
 
   welcome() {
     console.log(`Welcome to ${this.name}!`);
-  }
-
-  getToy(name) {
-    for (let i = 0; i < this.stock.length; i++) {
-      const toy = this.stock[i];
-      if (toy.name === name) return toy;
-    }
-    return null;
-  }
-
-  processProductSale(name) {
-    const toy = this.getToy(name);
-    if (toy === null) throw new Error("Unknown toy", name);
-    if (toy.count > 0) {
-      toy.count--;
-      this.revenue += toy.price;
-    } else {
-      console.log(name, "sold out");
-    }
-  }
-
-  replenishStock(name, count) {
-    const toy = this.getToy(name);
-    if (toy === null) throw new Error("Unknown toy", name);
-    toy.count += count;
   }
 }
 

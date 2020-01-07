@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "unsolved",
+=======
+  "name": "solved",
+>>>>>>> upstream/master
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

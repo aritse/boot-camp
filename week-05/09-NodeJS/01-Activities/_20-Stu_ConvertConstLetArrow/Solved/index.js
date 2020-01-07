@@ -17,8 +17,11 @@ const makeGuess = () => {
 };
 
 const Crystal = function(color) {
+<<<<<<< HEAD
   console.log(this);
 
+=======
+>>>>>>> upstream/master
   this.element = document.createElement("div");
   this.element.className = "crystal " + color;
   this.value = 0;
@@ -38,18 +41,32 @@ Crystal.prototype.render = function(target) {
   target.appendChild(this.element);
 };
 
+<<<<<<< HEAD
 const crystals = [new Crystal("red"), new Crystal("blue"), new Crystal("green")];
 
 const playRound = function() {
+=======
+const crystals = [
+  new Crystal("red"),
+  new Crystal("blue"),
+  new Crystal("green")
+];
+
+const playRound = () => {
+>>>>>>> upstream/master
   const fragment = document.createDocumentFragment();
   const $score = document.createElement("p");
   targetScore = Math.floor(Math.random() * 50) + 25;
   score = 0;
   $score.textContent = "Score: " + score + " | " + "Target: " + targetScore;
   crystals
+<<<<<<< HEAD
     .sort(() => {
       return 0.5 - Math.random();
     })
+=======
+    .sort(() => 0.5 - Math.random())
+>>>>>>> upstream/master
     .forEach(crystal => crystal.render(fragment));
   fragment.appendChild($score);
   $root.innerHTML = "";
