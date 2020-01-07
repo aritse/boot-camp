@@ -1,15 +1,8 @@
-// Dependencies
-var express = require("express");
+const express = require("express");
+const app = express();
+const PORT = 3000;
 
-var app = express();
-var PORT = 3000;
-
-// Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-// Data
-var characters = [
+const characters = [
   {
     routeName: "yoda",
     name: "Yoda",
@@ -34,40 +27,30 @@ var characters = [
 ];
 
 // Routes
+// ===========================================================
+
 app.get("/", function(req, res) {
-  res.send("Welcome to the Star Wars Page!");
+  res.send("Welcome to the Star Wars Page");
 });
 
-// Displays all characters
 app.get("/api/characters", function(req, res) {
   return res.json(characters);
 });
 
-// Displays a single character, or shows "No character found"
 app.get("/api/characters/:character", function(req, res) {
-  var chosen = req.params.character;
-
+  // What does this code do?
+  const chosen = req.params.character;
   console.log(chosen);
 
-  for (var i = 0; i < characters.length; i++) {
+  // What does this code do?
+  for (let i = 0; i < characters.length; i++) {
     if (chosen === characters[i].routeName) {
       return res.json(characters[i]);
     }
   }
 
+  // What does this code do?
   return res.send("No character found");
-
-});
-
-// Create New Characters - takes in JSON input
-app.post("/api/characters", function(req, res) {
-  var newCharacter = req.body;
-
-  console.log(newCharacter);
-
-  characters.push(newCharacter);
-
-  res.json(newCharacter);
 });
 
 app.listen(PORT, function() {

@@ -1,24 +1,34 @@
 // Dependencies
 // ===========================================================
-var express = require("express");
+const express = require("express");
+console.log(typeof express); // express() is a constructor function
 
-var app = express();
-var PORT = 3000;
+const app = express(); // app is an instance of the constructor function
+console.log(typeof app);
+
+const PORT = 3000;
 
 // Data
 // ===========================================================
-var yoda = {
+const yoda = {
   name: "Yoda",
   role: "Jedi Master",
   age: 900,
   forcePoints: 2000
 };
 
-var darthmaul = {
+const darthmaul = {
   name: "Darth Maul",
   role: "Sith Lord",
   age: 200,
   forcePoints: 1200
+};
+
+const kenobi = {
+  name: "Obi-Wan Kenobi",
+  role: "Jedi",
+  age: 100,
+  forcePoints: 2200
 };
 
 // Create one more data entry for the character Obi Wan Kenobi.
@@ -41,6 +51,10 @@ app.get("/yoda", function(req, res) {
 
 app.get("/darthmaul", function(req, res) {
   res.json(darthmaul);
+});
+
+app.get("/kenobi", function(req, res) {
+  res.json(kenobi);
 });
 
 // Create a new Express route that leads users to the new Obi Wan Kenobi Data
