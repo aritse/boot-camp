@@ -20,15 +20,15 @@ const artist = "U2";
 afterConnection = () => {
   connection.query("SELECT * FROM songs", (err, res) => {
     if (err) throw err;
-    console.log(res);
+    console.table(res);
   });
   connection.query(`SELECT * FROM songs WHERE genre="${genre}"`, (err, res) => {
     if (err) throw err;
-    console.log(res);
+    console.table(res);
   });
   connection.query(`SELECT * FROM songs WHERE artist="${artist}"`, (err, res) => {
     if (err) throw err;
-    console.log(res);
+    console.table(res);
   });
   connection.end();
 };
