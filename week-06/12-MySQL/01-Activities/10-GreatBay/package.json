@@ -1,8 +1,8 @@
 {
-  "name": "ice-cream-db-read-data",
+  "name": "10-GreatBay",
   "version": "1.0.0",
-  "description": "",
-  "main": "iceCreamReadData.js",
+  "description": "**Instructions**",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mysql": "^2.16.0"
+    "mysql": "^2.17.1"
   }
 }

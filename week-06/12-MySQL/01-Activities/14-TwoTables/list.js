@@ -1,30 +1,24 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: "localhost",
-
-  // Your port; if not 3306
   port: 3306,
-
-  // Your username
   user: "root",
-
-  // Your password
   password: "password",
-  database: "top_db"
+  database: "top_songs_albums_db"
 });
 
-connection.connect(function(err) {
+connection.connect(err => {
   if (err) throw err;
-  console.log("connected as id " + connection.threadId + "\n");
+  console.log("connected as id", connection.threadId);
   askQuestions();
 });
 
 function askQuestions() {
   inquirer
     .prompt({
-      message: "what would you like to do?",
+      message: "Choose",
       type: "list",
       choices: [
         "get data by artist name",
