@@ -16,6 +16,7 @@ connection.connect(err => {
 
 function populateDB() {
   connection.query("TRUNCATE actors", err => {
+    if (err) throw err;
     console.log("Truncated actors");
   });
 
@@ -36,10 +37,7 @@ function populateDB() {
 
   names.forEach(name => {
     const coolness = (Math.random() * 10) | 0;
-    console.log("Coolness:", coolness);
-
     const attitude = attitudes[((Math.random() * 10) | 0) % attitudes.length];
-    console.log("Attitude:", attitude);
 
     connection.query(
       "INSERT INTO actors SET ?",
