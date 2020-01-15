@@ -1,38 +1,36 @@
 const express = require("express");
+
 const PORT = process.env.PORT || 8080;
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-app.get("/:operator/:first/:second", (req, res) => {
+app.get("/:operator/:operand1/:operand2", (req, res) => {
   let result;
-  let { operator, first, second } = req.params;
-  first = parseInt(first);
-  second = parseInt(second);
-  console.log(operator, first, second);
+  let { operator, operand1, operand2 } = req.params;
+  operand1 = parseInt(operand1);
+  operand2 = parseInt(operand2);
 
   switch (operator) {
     case "add":
     case "+":
-      result = first + second;
+      result = operand1 + operand2;
       break;
     case "subtract":
     case "-":
-      result = first - second;
+      result = operand1 - operand2;
       break;
     case "multiply":
     case "*":
-      result = first * second;
+      result = operand1 * operand2;
       break;
     case "divide":
-      result = first / second;
+    case ":":
+      result = operand1 / operand2;
       break;
     default:
-      result = "Sorry! The only valid operations are add, subtract, multiply, and divide.";
+      result = "Sorry! The only valid operators are add (+), subtract (-), multiply (*), and divide (:).";
   }
 
-  res.json(result);
+  res.send(result.toString());
 });
 
-app.listen(PORT, () => console.log("Server listening on: http://localhost:" + PORT));
+app.listen(PORT, () => console.log("listening on: http://localhost:" + PORT));
