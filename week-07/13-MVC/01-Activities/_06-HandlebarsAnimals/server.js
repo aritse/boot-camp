@@ -1,14 +1,13 @@
-var express = require("express");
-var exphbs = require("express-handlebars");
+const express = require("express");
+const exphbs = require("express-handlebars");
 
-var app = express();
-
-var PORT = process.env.PORT || 8080;
+const app = express();
+const PORT = process.env.PORT || 8080;
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var animals = [
+const animals = [
   {
     animalType: "dog",
     pet: true,
@@ -40,16 +39,14 @@ app.get("/dog", function(req, res) {
   res.render("dog", animals[0]);
 });
 
-app.get("/all-pets", function(req, res) {
+app.get("/all-home", function(req, res) {
   const pets = animals.filter(a => a.pet);
   res.render("index", { animals: pets });
 });
 
-app.get("/all-non-pets", function(req, res) {
-  const nonPets = animals.filter(a => !a.pet);
-  res.render("index", { animals: nonPets });
+app.get("/all-wild", function(req, res) {
+  const wild = animals.filter(a => !a.pet);
+  res.render("index", { animals: wild });
 });
 
-app.listen(PORT, function() {
-  console.log("Server listening on: http://localhost:" + PORT);
-});
+app.listen(PORT, () => console.log("Server listening on: http://localhost: " + PORT));
