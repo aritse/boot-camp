@@ -4,92 +4,66 @@
   {{#each plans}}
   <li>
     <p>
-      {{this.id}}. {{this.plan}}
-
-      <button data-planid="{{this.id}}" class="delplan">Delete Plan!</button>
+      {{id}}. {{plan}}
+      <button data-id="{{id}}" class="delete-button">Delete</button>
     </p>
   </li>
   {{/each}}
 </ul>
 
-<h2>Create a Plan</h2>
-<form id="createplan" class="button-size">
-  <textarea type="text" name="plan"></textarea>
-  <button type="submit">Save Plan!</button>
+<h2>Create</h2>
+<form id="create-form" class="button-size">
+  <input type="text" name="plan"></input>
+  <button type="submit">Create</button>
 </form>
 
-<h2>Update a Plan</h2>
-<form id="updateplan" class="button-size">
+<h2>Update</h2>
+<form id="update-form">
   <select name="id">
-		{{#each plans}}
-			<option value="{{this.id}}">{{this.plan}}</option>
-		{{/each}}
-	</select>
-  <textarea type="text" name="plan" placeholder="plan"></textarea>
-  <button type="submit">Update Plan!</button>
+    {{#each plans}}
+    <option value="{{id}}">{{plan}}</option>
+    {{/each}}
+  </select>
+  <input type="text" name="plan"></input>
+  <button type="submit">Update</button>
 </form>
 
 <script type="text/javascript">
-  $(".delplan").on("click", function(event) {
-    // Get the ID from the button.
-    // This is shorthand for $(this).attr("data-planid")
-    var id = $(this).data("planid");
+  $("#create-form").on("submit", e => {
+    e.preventDefault();
+    // get the new plan by finding an element with a "name"
+    // attribute equal to the string "plan" in create-form
+    const newPlan = { plan: $("#create-form [name=plan]").val() };
 
-    // Send the DELETE request.
-    $.ajax("/api/plans/" + id, {
-      type: "DELETE"
-    }).then(
-      function() {
-        console.log("deleted id ", id);
-        // Reload the page to get the updated list
+    // Send the POST request
+    $.ajax("/api/plans", { method: "POST", data: newPlan })
+      .then(() => {
+        console.log("created plan");
         location.reload();
-      }
-    );
+      });
   });
 
-  $("#createplan").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
+  $("#update-form").on("submit", e => {
+    e.preventDefault();
+    const id = $("#update-form [name=id]").val();
+    const updatedPlan = { plan: $("#update-form [name=plan]").val() };
 
-    // [name=plan] will find an element with a "name" attribute equal to the string "plan"
-    var newPlan = {
-      plan: $("#createplan [name=plan]").val().trim()
-    };
-
-    // Send the POST request.
-    $.ajax("/api/plans", {
-      type: "POST",
-      data: newPlan
-    }).then(
-      function() {
-        console.log("created new plan");
-        // Reload the page to get the updated list
+    $.ajax("/api/plans/" + id, { method: "PUT", data: updatedPlan })
+      .then(() => {
+        console.log("updated plan id:", id);
         location.reload();
-      }
-    );
+      });
   });
 
-  $("#updateplan").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    // Get the ID by finding an element with a "name" attribute equal to the string "id"
-    var id = $("[name=id]").val().trim();
-
-    var updatedPlan = {
-      plan: $("#updateplan [name=plan]").val().trim()
-    };
-
-    // Send the PUT request.
-    $.ajax("/api/plans/" + id, {
-      type: "PUT",
-      data: updatedPlan
-    }).then(
-      function() {
-        console.log("updated id ", id);
-        // Reload the page to get the updated list
+  $(".delete-button").on("click", function (e) {
+    // get the ID from the button
+    //const id = $(this).attr("data-id");
+    const id = $(this).data("id");
+    $.ajax("/api/plans/" + id, { method: "DELETE" })
+      .then(() => {
+        console.log("deleted plan id:", id);
         location.reload();
-      }
-    );
+      });
   });
+
 </script>
