@@ -1,0 +1,62 @@
+<h1>Movie Watchlist</h1>
+<ul>
+    {{#each films}}
+    <li>
+        <p>
+            {{id}}. {{film}}
+            <button data-id="{{id}}" class="delete-button">Delete</button>
+        </p>
+    </li>
+    {{/each}}
+</ul>
+
+<h2>Enter</h2>
+<form id="enter-form" class="button-size">
+    <input type="text" name="film"></input>
+    <button type="submit">Enter</button>
+</form>
+
+<h2>Update</h2>
+<form id="update-form" class="button-size">
+    <select name="id">
+        {{#each films}}
+        <option value="{{id}}">{{film}}</option>
+        {{/each}}
+    </select>
+    <input type="text" name="film"></input>
+    <button type="submit">Update</button>
+</form>
+
+<script type="text/javascript">
+    $("#enter-form").on("submit", e => {
+        e.preventDefault();
+        const newMovie = { film: $("#enter-form [name=film]").val() };
+
+        $.ajax("/api/movies", { method: "POST", data: newMovie })
+            .then(() => {
+                console.log("created new movie");
+                location.reload();
+            });
+    });
+
+    $("#update-form").on("submit", e => {
+        e.preventDefault();
+        const id = $("#update-form [name=id]").val();
+        const updatedMovie = { film: $("#update-form [name=film]").val() };
+        $.ajax("/api/movies/" + id, { method: "PUT", data: updatedMovie })
+            .then(() => {
+                console.log("updated id ", id);
+                location.reload();
+            });
+    });
+
+    $(".delete-button").on("click", function (e) {
+        e.preventDefault();
+        const id = $(this).data("id");
+        $.ajax("/api/movies/" + id, { method: "DELETE" })
+            .then(() => {
+                console.log("deleted id:", id);
+                location.reload();
+            });
+    });
+</script>
