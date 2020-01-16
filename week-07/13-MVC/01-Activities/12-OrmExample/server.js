@@ -1,4 +1,4 @@
-var orm = require("./config/orm.js");
+const orm = require("./config/orm.js");
 
 // Find all the pets ordering by the lowest price to the highest price.
 orm.selectAndOrder("animal_name", "pets", "price");
