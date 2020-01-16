@@ -1,7 +1,6 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
   $(".delete").on("click", function(event) {
-    event.preventDefault();
     const id = $(this).data("id");
     $.ajax("/api/cats/" + id, {
       method: "DELETE"
