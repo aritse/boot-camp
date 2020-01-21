@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Favorite Movies</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style type="text/css">
+    button,
+    div,
+    form,
+    input {
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Movie Search</h1>
+
+    <div id="buttons-view">
+      <!-- Rendered buttons will be here  -->
+    </div>
+
+    <form id="movie-form">
+      <label for="movie-input">Add a Movie</label>
+      <input type="text" id="movie-input">
+      <input type="submit" id="add-movie" value="Submit">
+    </form>
+
+    <div id="movies-view">
+      <!-- Movies will be here -->
+    </div>
+
+    <script src="./script.js"></script>
+  </div>
+</body>
+
+</html>
