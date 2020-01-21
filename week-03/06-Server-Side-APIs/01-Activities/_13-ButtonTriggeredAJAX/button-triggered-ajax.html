@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Quoth the Giphy</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="buttons">
+    <button data-person="arnold schwarzenegger"> I'll be back </button>
+    <button data-person="rhett butler"> Frankly, my dear, I don't give a damn. </button>
+    <button data-person="albert einstein"> Any fool can know. The point is to understand. </button>
+    <button data-person="michael j fox"> My happiness grows in direct proportion to my acceptance, and in inverse proportion to my expectations. </button>
+    <button data-person="oscar wilde"> Be yourself; everyone else is already taken. </button>
+  </div>
+
+  <div id="gifs-appear-here">
+
+  </div>
+
+  <script type="text/javascript">
+    $("button").on("click", function () {
+      const person = $(this).attr("data-person");
+      const queryURL = "https://api.giphy.com/v1/gifs/search?q=" + person + "&api_key=dc6zaTOxFJmzC&limit=10";
+      $.ajax(queryURL)
+        .then(response => {
+          const results = response.data;
+          results.forEach(result => {
+            const gifDiv = $("<div>");
+            const rating = result.rating;
+            const p = $("<p>").text("Rating: " + rating);
+            const image = $("<img>");
+            image.attr("src", result.images.fixed_height.url);
+            gifDiv.prepend(p);
+            gifDiv.prepend(image);
+            $("#gifs-appear-here").prepend(gifDiv);
+          });
+        });
+    });
+  </script>
+</body>
+
+</html>
