@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Giphy API</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <script type="text/javascript">
+    const url = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+    $.ajax(url).then(res => console.log(res));
+  </script>
+
+</body>
+
+</html>
