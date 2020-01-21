@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NYT Search</title>
+</head>
+
+<body>
+    <header>
+        <span><img src="logo.jpg" alt="logo"></span>New York Times Search
+    </header>
+    <div class="search-parameters">
+        <h2>
+            <span><img src="logo.jpg" alt="logo"></span>
+            Search Parameters</h2>
+        <form>
+            <div id="search-term-div" class="search-input">
+                <label>Search Term:</label>
+                <input id="search-term-input" type="text">
+            </div>
+            <div id="number-of-records-div" class="search-input">
+                <label>Number of Records to Retrieve:</label>
+                <input id="number-of-records-input" type="text">
+            </div>
+            <div id="start-year-div" class="search-input">
+                <label>Start Year (Optional):</label>
+                <input id="start-year-input" type="text">
+            </div>
+            <div id="end-year-div" class="search-input">
+                <label>End Year (Optional):</label>
+                <input id="end-year-input" type="text">
+            </div>
+            <div class="buttons">
+                <button class="search">Search</button>
+                <button class="clear">Clear Results</button>
+            </div>
+        </form>
+    </div>
+    <div class="top-articles">
+        <h2>
+            <span><img src="logo.jpg" alt="logo"></span>
+            Top Articles</h2>
+        <div></div>
+    </div>
+    <footer>Made with lots and lots of &#10084;</footer>
+</body>
+
+</html>
+
+</html>
