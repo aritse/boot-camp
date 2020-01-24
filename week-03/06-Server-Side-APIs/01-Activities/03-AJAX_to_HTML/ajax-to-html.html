@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>Favorite Movies</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -14,40 +15,27 @@
     <table class="table">
       <thead>
         <tr>
-          <!-- The scope attribute specifies that this is a header for a column -->
           <th scope="col">Movie Name</th>
           <th scope="col">Year</th>
           <th scope="col">Actors</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Insert additional movie rows here -->
       </tbody>
     </table>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
     const movies = ["Inception", "Interstellar", "Mr. Nobody", "Frozen"];
     movies.forEach(movie => {
-
-      // The below code fills in the first row of the table
-      var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
-
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function (response) {
-        var tdTitle = $("<td>").text(response.Title);
-        var tdYear = $("<td>").text(response.Year);
-        var tdActors = $("<td>").text(response.Actors);
-        var tr = $("<tr>").append(tdTitle, tdYear, tdActors);
+      const queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+      $.ajax(queryURL).then(response => {
+        const tdTitle = $("<td>").text(response.Title);
+        const tdYear = $("<td>").text(response.Year);
+        const tdActors = $("<td>").text(response.Actors);
+        const tr = $("<tr>").append(tdTitle, tdYear, tdActors);
         $("tbody").append(tr);
       });
     });
-
-    // Repeat the above logic to add rows for two more movies of your choice
-
-    // BONUS: Once complete, try to make your code as DRY as possible through the use of functions
   </script>
 </body>
 

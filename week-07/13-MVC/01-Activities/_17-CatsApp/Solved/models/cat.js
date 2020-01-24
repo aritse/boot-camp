@@ -19,7 +19,13 @@ var cat = {
     });
   },
   delete: function(condition, cb) {
+<<<<<<< HEAD
     orm.delete("cats", condition, res => cb(res));
+=======
+    orm.delete("cats", condition, function(res) {
+      cb(res);
+    });
+>>>>>>> upstream/master
   }
 };
 

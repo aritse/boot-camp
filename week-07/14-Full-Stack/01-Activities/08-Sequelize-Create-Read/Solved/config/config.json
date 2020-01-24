@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "password",
+=======
+    "password": null,
+>>>>>>> upstream/master
     "database": "todolist",
     "host": "127.0.0.1",
     "port": 3306,

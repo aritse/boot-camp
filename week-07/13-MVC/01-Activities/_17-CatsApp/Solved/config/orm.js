@@ -93,7 +93,10 @@ var orm = {
     queryString += " WHERE ";
     queryString += condition;
 
+<<<<<<< HEAD
     console.log(queryString);
+=======
+>>>>>>> upstream/master
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
