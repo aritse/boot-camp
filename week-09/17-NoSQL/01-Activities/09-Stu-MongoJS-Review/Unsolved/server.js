@@ -33,29 +33,38 @@ db.on("error", error => {
 app.post("/submit", ({ body }, res) => {
   // Save the request body as an object called book
   const book = body;
-
-  // If we want the object to have a boolean value of false,
-  // we have to do it here, because the ajax post will convert it
-  // to a string instead of a boolean
   book.read = false;
+  db.books.insert(body, (err, data) => {
+    res.json(data);
+  });
 });
 
 // Find all books marked as read
-app.get("/read", (req, res) => {});
+app.get("/read", (req, res) => {
+  db.books.find({ read: true }, (err, data) => {
+    res.json(data);
+  });
+});
 
 // Find all books marked as unread
-app.get("/unread", (req, res) => {});
+app.get("/unread", (req, res) => {
+  db.books.find({ read: false }, (err, data) => {
+    res.json(data);
+  });
+});
 
 // Mark a book as having been read
 app.put("/markread/:id", (req, res) => {
-  // Remember: when searching by an id, the id needs to be passed in
-  // as (mongojs.ObjectId(IdYouWantToFind))
+  db.books.update({ _id: mongojs.ObjectID(req.params.id) }, { $set: { read: true } }, (err, data) => {
+    res.json(data);
+  });
 });
 
 // Mark a book as having been not read
 app.put("/markunread/:id", (req, res) => {
-  // Remember: when searching by an id, the id needs to be passed in
-  // as (mongojs.ObjectId(IdYouWantToFind))
+  db.books.update({ _id: mongojs.ObjectID(req.params.id) }, { $set: { read: false } }, (err, data) => {
+    res.json(data);
+  });
 });
 
 // Listen on port 3000
