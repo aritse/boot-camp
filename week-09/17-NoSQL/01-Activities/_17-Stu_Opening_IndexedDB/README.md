@@ -1,4 +1,4 @@
-# Requesting an IndexedDB Database
+ # Requesting an IndexedDB Database
 
 In this activity, you will create a request for an indexedDB database and console.log the name of the db to the screen. 
 
