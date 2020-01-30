@@ -56,12 +56,11 @@ app.post("/submit", ({ body }, res) => {
     });
 });
 
-app.get("/populateduser", (req, res) => {
-  // TODO
-  // =====
-  // Write the query to grab the documents from the User collection,
-  // and populate them with any associated Notes.
-  // TIP: Check the models out to see how the Notes refers to the User
+app.get("/populated", (req, res) => {
+  db.User.find({})
+    .populate("notes")
+    .then(users => res.json(users))
+    .catch(err => res.json(err));
 });
 
 // Start the server
