@@ -7,26 +7,21 @@
 * **Your Task:**
 
 * Add Extreme Basket Weaving to your array of hobbies.
+  * `db.students.update({name:"Ari"},{$push:{hobbies: "basket weaving"}})`
 
 * Change the operating system of the student next to you.
+  * `db.students.update({_id:ObjectId("5e31d4f2652cf0e09bc3170b")},{$set:{os:"Win"}})`
 
 * Remove the student to the other side of you from your database.
+  * `db.students.remove({name:"Joe"})`
 
 * Add a field of `gavecandy` with a value of `false` to everyone in the array.
+  * `db.students.update({},{$set:{candy:false}},{multi:true})`
 
 * Change the value of `gavecandy` to true for yourself.
+  * `db.students.update({name:"Ari"},{$set:{candy:true}})`
 
 ## Bonus
-
-* Add Extreme Basket Weaving to your array of hobbies.
-
-* Change the operating system of the student next to you.
-
-* Remove the student to the other side of you from your database.
-
-* Add a field of `gavecandy` with a value of `false` to everyone in the array.
-
-* Change the value of `gavecandy` to true for yourself.
 
 ## 💡 Hint(s)
 
@@ -35,3 +30,13 @@
 ## 🏆 Bonus
 
 * Insert five more documents with one command. Use [https://docs.mongodb.com/manual/tutorial/query-documents/](https://docs.mongodb.com/manual/tutorial/query-documents/) to see how you can accomplish this.
+
+```sql
+db.students.insertMany([
+    { name:"Mike", rowNumber: 4, os:"Win", hobbies:["coding","carpentry"], candy:false },
+    { name:"Jackie", rowNumber: 1 , os:"Win", hobbies:["basketball","dancing"],candy:false },
+    { name:"Nick", rowNumber: 3, os:"Win", hobbies:["basketball","football"],candy:false },
+    { name:"Sarah", rowNumber: 1, os:"Win", hobbies:["reading","sewing"],candy:false },
+    { name:"Ben", rowNumber: 4, os:"Mac", hobbies:["eating","climbing"],candy:false },
+])
+ ```

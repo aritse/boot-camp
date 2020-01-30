@@ -2,7 +2,6 @@
 
 const express = require("express");
 const mongojs = require("mongojs");
-
 const logger = require("morgan");
 
 const app = express();
@@ -29,12 +28,9 @@ db.on("error", error => {
 // the proper mongojs functions for the site to function
 // -/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 
-// Post a book to the mongoose database
-app.post("/submit", ({ body }, res) => {
-  // Save the request body as an object called book
-  const book = body;
-  book.read = false;
-  db.books.insert(body, (err, data) => {
+app.post("/submit", (req, res) => {
+  req.body.read = false;
+  db.books.insert(req.body, (err, data) => {
     res.json(data);
   });
 });

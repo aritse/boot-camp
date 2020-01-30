@@ -24,10 +24,6 @@ app.get("/", (req, res) => {
   res.send(index.html);
 });
 
-// TODO: You will make six more routes. Each will use mongojs methods
-// to interact with your mongoDB database, as instructed below.
-// -/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
-
 // 1. Save a note to the database's collection
 // POST: /submit
 // ===========================================
@@ -47,21 +43,15 @@ app.get("/all", (req, res) => {
 });
 
 // 3. Retrieve one note in the database's collection by it's ObjectId
-// TIP: when searching by an id, the id needs to be passed in
-// as (mongojs.ObjectId(IdYouWantToFind))
 // GET: /find/:id
 // ==================================================================
 app.get("/find/:id", (req, res) => {
-  console.log(req.params.id);
-
-  // db.notes.find({ _id: req.params.id }, (err, data) => {
-  db.notes.find({ _id: mongojs.ObjectID(req.params.id) }, (err, data) => {
+  db.notes.findOne({ _id: mongojs.ObjectID(req.params.id) }, (err, data) => {
     res.json(data);
   });
 });
 
 // 4. Update one note in the database's collection by it's ObjectId
-// (remember, mongojs.ObjectId(IdYouWantToFind)
 // POST: /update/:id
 // ================================================================
 app.post("/update/:id", (req, res) => {
@@ -71,7 +61,6 @@ app.post("/update/:id", (req, res) => {
 });
 
 // 5. Delete one note from the database's collection by it's ObjectId
-// (remember, mongojs.ObjectId(IdYouWantToFind)
 // DELETE: /delete/:id
 // ==================================================================
 app.delete("/delete/:id", (req, res) => {
@@ -84,7 +73,7 @@ app.delete("/delete/:id", (req, res) => {
 // DELETE: /clearall
 // ===================================
 app.delete("/clearall", (req, res) => {
-  db.notes.drop((err, data) => {
+  db.notes.remove({}, (err, data) => {
     res.json(data);
   });
 });
