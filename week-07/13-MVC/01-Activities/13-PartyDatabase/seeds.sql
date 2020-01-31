@@ -1,6 +1,6 @@
-INSERT INTO clients (client_name) VALUES ('Bilal');
-INSERT INTO clients (client_name) VALUES ('Brianne');
-INSERT INTO clients (client_name) VALUES ('Vincent');
+INSERT INTO clients (client) VALUES ('Bilal');
+INSERT INTO clients (client) VALUES ('Brianne');
+INSERT INTO clients (client) VALUES ('Vincent');
 
 INSERT INTO parties (party_name, party_type, party_cost, client_id) VALUES ('Everybody Loves Raymond', 'tv', 500, 1);
 INSERT INTO parties (party_name, party_type, party_cost, client_id) VALUES ('Big Bang Theory', 'tv', 900, 1);

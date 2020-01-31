@@ -1,23 +1,19 @@
-### Schema
-
+DROP DATABASE IF EXISTS parties_db;
 CREATE DATABASE parties_db;
-
 USE parties_db;
 
-CREATE TABLE clients
-(
-	id int NOT NULL AUTO_INCREMENT,
-	client_name varchar(255) NOT NULL,
+CREATE TABLE clients (
+	id INTEGER NOT NULL AUTO_INCREMENT,
+	client VARCHAR(255) NOT NULL,
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE parties
-(
-	id int NOT NULL AUTO_INCREMENT,
-	party_name varchar(255) NOT NULL,
-	party_type varchar(255) NOT NULL,
-	party_cost int NOT NULL,
-	client_id int NOT NULL,
+CREATE TABLE parties (
+	id INTEGER NOT NULL AUTO_INCREMENT,
+	party_name VARCHAR(255) NOT NULL,
+	party_type VARCHAR(255) NOT NULL,
+	party_cost INTEGER NOT NULL,
+	client_id INTEGER NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (client_id) REFERENCES clients(id)
 );

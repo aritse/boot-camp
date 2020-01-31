@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 
-const conn = mysql.createConnection({
+const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
@@ -8,9 +8,9 @@ const conn = mysql.createConnection({
   database: "parties_db"
 });
 
-conn.connect(err => {
+connection.connect(err => {
   if (err) throw err;
-  console.log("connected to db as id", conn.threadId);
+  console.log("connected to db as id", connection.threadId);
 });
 
-module.exports = conn;
+module.exports = connection;
