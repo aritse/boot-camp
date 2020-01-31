@@ -12,7 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+<<<<<<< HEAD
     "mongojs": "^3.1.0",
+=======
+    "logger": "^0.0.1",
+    "mongojs": "^2.6.0",
+>>>>>>> upstream/master
     "morgan": "^1.9.1"
   }
 }

@@ -16,10 +16,21 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userdb", { useNewUrlParser: true });
 
+<<<<<<< HEAD
 app.post("/submit", (req, res) => {
   User.create(req.body)
     .then(dbUser => res.json(dbUser))
     .catch(err => res.json(err));
+=======
+app.post("/submit", ({ body }, res) => {
+  User.create(body)
+    .then(dbUser => {
+      res.json(dbUser);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+>>>>>>> upstream/master
 });
 
 app.listen(PORT, () => {

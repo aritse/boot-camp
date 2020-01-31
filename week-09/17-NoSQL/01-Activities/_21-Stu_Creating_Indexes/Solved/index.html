@@ -10,16 +10,12 @@
 <body>
   <h1>Open Your Developer Tools > Application > IndexedDB</h1>
   <script>
-    // request an instance of IndexedDB database
-    const request = window.indexedDB.open("toDoList", 1);
+    const request = window.indexedDB.open("toDo", 1);
 
     request.onupgradeneeded = ({ target }) => {
       const db = target.result;
+      const objectStore = db.createObjectStore("todoList");
 
-      // create an object store for my database
-      const objectStore = db.createObjectStore("toDoList");
-
-      // create indices for my object store
       objectStore.createIndex("icebox", "icebox");
       objectStore.createIndex("inprogress", "inprogress");
       objectStore.createIndex("complete", "complete");

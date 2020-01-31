@@ -56,6 +56,7 @@ app.post("/submit", ({ body }, res) => {
     });
 });
 
+<<<<<<< HEAD
 app.get("/populated", (req, res) => {
   db.User.find({})
     .populate("notes")
@@ -64,6 +65,19 @@ app.get("/populated", (req, res) => {
 });
 
 // Start the server
+=======
+app.get("/populateduser", (req, res) => {
+  db.User.find({})
+    .populate("notes")
+    .then(dbUser => {
+      res.json(dbUser);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+>>>>>>> upstream/master
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
