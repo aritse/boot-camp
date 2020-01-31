@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Adding and Getting Data</title>
-  </head>
 
-  <body>
-    <h1>Open Your Developer Tools > Application > IndexedDB</h1>
-    <script>
-      const request = window.indexedDB.open("toDoList", 1);
-      
-      request.onupgradeneeded = event => {
-        const db = event.target.result;
-       // CODE HERE
-      }
+<head>
+  <meta charset="utf-8" />
+  <title>Adding and Getting Data</title>
+</head>
 
-      
-      request.onsuccess = () => {
-        const db = request.result;
-        // CODE HERE
+<body>
+  <h1>Open Your Developer Tools > Application > IndexedDB</h1>
+  <script>
+    const request = window.indexedDB.open("toDoList", 1);
+
+    request.onupgradeneeded = event => {
+      const db = event.target.result;
+      const objectStore = db.createObjectStore("toDoList", { keyPath: "listID" });
+      const dueIdx = objectStore.createIndex("duedate", "duedate");
+    }
+
+    request.onsuccess = () => {
+      const db = request.result;
+      const transaction = db.transaction("toDoList", "readwrite");
+      const objectStore = transaction.objectStore("toDoList");
+      const dueDateIndex = objectStore.index("duedate");
+
+      objectStore.add({ listID: "1", duedate: "Jan 21" });
+      objectStore.add({ listID: "2", duedate: "Feb 21" });
+      objectStore.add({ listID: "3", duedate: "yes" });
+      objectStore.add({ listID: "4", duedate: "yes" });
+
+      const getRequest = objectStore.get("1");
+      getRequest.onsuccess = () => {
+        console.log(getRequest.result);
       };
 
-    </script>
-  </body>
+      const getAllRequest = objectStore.getAll("yes");
+      getAllRequest.onsuccess = () => {
+        console.log(getAllRequest.result);
+      };
+    };
+
+  </script>
+</body>
+
 </html>

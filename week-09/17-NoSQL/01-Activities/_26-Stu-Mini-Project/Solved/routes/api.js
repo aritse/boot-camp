@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Transaction = require("../models/transaction.js.js");
+const Transaction = require("../models/transaction.js");
 
 router.post("/api/transaction", ({ body }, res) => {
   Transaction.create(body)
@@ -32,4 +32,13 @@ router.get("/api/transaction", (req, res) => {
     });
 });
 
+router.delete("/api/transaction", (req, res) => {
+  Transaction.remove({})
+    .then(dbTransaction => {
+      res.json(dbTransaction);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
 module.exports = router;

@@ -79,10 +79,23 @@ function populateChart() {
   });
 }
 
+function resetBudget() {
+  fetch("/api/transaction", {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json"
+    }
+  }).then(response => {
+    return response.json();
+  });
+  location.reload(true);
+}
+
 function sendTransaction(isAdding) {
   const nameEl = document.querySelector("#t-name");
   const amountEl = document.querySelector("#t-amount");
-  const errorEl = document.querySelector(".form .error");
+  const errorEl = document.querySelector("form .error");
 
   // validate form
   if (nameEl.value === "" || amountEl.value === "") {
@@ -144,11 +157,15 @@ function sendTransaction(isAdding) {
 }
 
 document.querySelector("#add-btn").onclick = function() {
-  event.preventDefault()
+  event.preventDefault();
   sendTransaction(true);
 };
 
 document.querySelector("#sub-btn").onclick = function() {
-  event.preventDefault()
+  event.preventDefault();
   sendTransaction(false);
+};
+document.querySelector("#reset-btn").onclick = function() {
+  event.preventDefault();
+  resetBudget();
 };
