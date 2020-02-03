@@ -32,6 +32,7 @@ router.get("/api/transaction", (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 router.delete("/api/transaction", (req, res) => {
   Transaction.remove({})
     .then(dbTransaction => {
@@ -41,4 +42,6 @@ router.delete("/api/transaction", (req, res) => {
       res.status(400).json(err);
     });
 });
+=======
+>>>>>>> upstream/master
 module.exports = router;

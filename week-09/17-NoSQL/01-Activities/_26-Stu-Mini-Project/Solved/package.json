@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/coding-boot-camp/unit18hw#readme",
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "compression": "^1.7.4",
+>>>>>>> upstream/master
     "express": "^4.17.1",
     "mongoose": "^5.5.15"
   }

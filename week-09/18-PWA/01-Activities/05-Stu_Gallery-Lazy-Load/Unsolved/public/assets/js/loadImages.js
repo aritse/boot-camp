@@ -9,8 +9,18 @@ function createEl(htmlString = "", className) {
 }
 
 function initLazyImages() {
-  // Enter your code here
+  const lazyImages = document.querySelectorAll(".lazy-image");
+  function onIntersection(imageEntities) {
+    imageEntities.forEach(image =>{
+      if (image.isIntersecting) {
+        observer.
+      }
+    });
+  }
+  const observer = new IntersectionObserver(onIntersection);
+  lazyImages.forEach(image => observer.observe(image));
 }
+
 
 function loadImages() {
   fetch("/api/images")
