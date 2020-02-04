@@ -9,18 +9,26 @@ function createEl(htmlString = "", className) {
 }
 
 function initLazyImages() {
-  const lazyImages = document.querySelectorAll(".lazy-image");
-  function onIntersection(imageEntities) {
-    imageEntities.forEach(image =>{
-      if (image.isIntersecting) {
-        observer.
+  // called when targets meet the intersection threshold
+  function onIntersection(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const image = entry.target;
+        image.setAttribute("src", image.getAttribute("data-src"));
+        image.onload = () => image.removeAttribute("data-src");
+        observer.unobserve(image);
       }
     });
   }
-  const observer = new IntersectionObserver(onIntersection);
+
+  // create an Intersection observer which invokes onIntersection callback
+  // function when targets meet a threshold
+  const observer = new IntersectionObserver(onIntersection, { threshold: 0.5 });
+
+  // tell the observer to watch all images as targets
+  const lazyImages = document.querySelectorAll(".lazy-image");
   lazyImages.forEach(image => observer.observe(image));
 }
-
 
 function loadImages() {
   fetch("/api/images")
@@ -51,8 +59,9 @@ function createCards(data) {
 function createCard(image) {
   const card = createEl("div", "card");
   const imageContainer = createEl("div", "card__image-container");
-  const img = createEl("img", "card-img-top card__image--cover");
-  img.setAttribute("src", image.image);
+  const img = createEl("img", "card-img-top card__image--cover lazy-image");
+  img.setAttribute("src", "https://via.placeholder.com/150");
+  img.setAttribute("data-src", image.image);
   img.setAttribute("alt", image.description);
 
   const cardBody = createEl("div", "card-body");
