@@ -17,23 +17,6 @@ In this activity you will use the Lazy Loading, GZip Compression, Image Compress
 
 * Open your Chrome Dev tools and run a Lighthouse audit on the application. Take note of the `performance` score listed at the top of the audit report.
 
-* Now, using the compression npm package, enable gzip compression in the application.
-
-* Restart your server and run a new audit.
-
-* Next, using [ImageOptim Online](https://imageoptim.com/online), compress all of the images found within the `public/assets/images`
-
-* Once you have compressed all of the images, replace the newly compressed images with the original uncompressed found in the applications images directory.
-
-* Restart your server and run a new audit.
-
-* Now that we have compressed our images and enabled gzip compression, our last step is to minify our JavaScript.
-
-* Create a `dist` folder in the root of your project folder
-
-  * Inside of `dist` create a file called `index.js`
-
-  * Link this `index.js` to your application
 
 * Head to [Online Minification](http://refresh-sf.com/).
 
