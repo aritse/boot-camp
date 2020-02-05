@@ -9,6 +9,7 @@ function createEl(htmlString = "", className) {
 }
 
 function initLazyImages() {
+<<<<<<< HEAD
   // called when targets meet the intersection threshold
   function onIntersection(entries) {
     entries.forEach(entry => {
@@ -17,16 +18,30 @@ function initLazyImages() {
         image.setAttribute("src", image.getAttribute("data-src"));
         image.onload = () => image.removeAttribute("data-src");
         observer.unobserve(image);
+=======
+  const lazyImages = document.querySelectorAll(".lazy-image");
+
+  function onIntersection(imageEntities) {
+    imageEntities.forEach(image => {
+      if (image.isIntersecting) {
+        observer.unobserve(image.target);
+        image.target.src = image.target.dataset.src;
+>>>>>>> upstream/master
       }
     });
   }
 
+<<<<<<< HEAD
   // create an Intersection observer which invokes onIntersection callback
   // function when targets meet a threshold
   const observer = new IntersectionObserver(onIntersection, { threshold: 0.5 });
 
   // tell the observer to watch all images as targets
   const lazyImages = document.querySelectorAll(".lazy-image");
+=======
+  const observer = new IntersectionObserver(onIntersection);
+
+>>>>>>> upstream/master
   lazyImages.forEach(image => observer.observe(image));
 }
 
@@ -38,7 +53,11 @@ function loadImages() {
 }
 
 function createCards(data) {
+<<<<<<< HEAD
   const container = document.getElementsByClassName("container")[0];
+=======
+  const container = document.querySelector(".container");
+>>>>>>> upstream/master
   container.innerHTML = "";
   let lastRow;
   const row = createEl("div", "row");
@@ -60,12 +79,21 @@ function createCard(image) {
   const card = createEl("div", "card");
   const imageContainer = createEl("div", "card__image-container");
   const img = createEl("img", "card-img-top card__image--cover lazy-image");
+<<<<<<< HEAD
   img.setAttribute("src", "https://via.placeholder.com/150");
+=======
+  img.setAttribute(
+    "src",
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOMrgcAATsA3BT31OAAAAAASUVORK5CYII=");
+>>>>>>> upstream/master
   img.setAttribute("data-src", image.image);
   img.setAttribute("alt", image.description);
 
   const cardBody = createEl("div", "card-body");
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/master
   const ratingFormContainer = createEl("div", "rating d-flex justify-content-start");
   ratingFormContainer.setAttribute("data-id", image._id);
   ratingFormContainer.setAttribute("data-rating", image.rating);

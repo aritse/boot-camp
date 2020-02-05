@@ -199,7 +199,11 @@ var imageSeed = [
     date: new Date(Date.now())
   },
   {
+<<<<<<< HEAD
     description: "Hampster",
+=======
+    description: "Hamster",
+>>>>>>> upstream/master
     image: "/assets/images/33.jpg",
     rating: 0,
     date: new Date(Date.now())

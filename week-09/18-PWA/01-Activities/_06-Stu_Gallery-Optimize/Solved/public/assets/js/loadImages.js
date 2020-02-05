@@ -9,6 +9,7 @@ function createEl(htmlString = "", className) {
 }
 
 function initLazyImages() {
+<<<<<<< HEAD
   callback = entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -22,6 +23,22 @@ function initLazyImages() {
   const observer = new IntersectionObserver(callback, { threshold: 0.5 });
   const elements = document.querySelectorAll(".card-img-top");
   elements.forEach(element => observer.observe(element));
+=======
+  const lazyImages = document.querySelectorAll(".lazy-image");
+
+  function onIntersection(imageEntities) {
+    imageEntities.forEach(image => {
+      if (image.isIntersecting) {
+        observer.unobserve(image.target);
+        image.target.src = image.target.dataset.src;
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver(onIntersection);
+
+  lazyImages.forEach(image => observer.observe(image));
+>>>>>>> upstream/master
 }
 
 function loadImages() {
@@ -53,9 +70,18 @@ function createCards(data) {
 function createCard(image) {
   const card = createEl("div", "card");
   const imageContainer = createEl("div", "card__image-container");
+<<<<<<< HEAD
   const img = createEl("img", "card-img-top card__image--cover");
   img.setAttribute("data-src", image.image);
   img.setAttribute("src", "https://via.placeholder.com/150");
+=======
+  const img = createEl("img", "card-img-top card__image--cover lazy-image");
+  img.setAttribute(
+    "src",
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOMrgcAATsA3BT31OAAAAAASUVORK5CYII="
+  );
+  img.setAttribute("data-src", image.image);
+>>>>>>> upstream/master
   img.setAttribute("alt", image.description);
 
   const cardBody = createEl("div", "card-body");

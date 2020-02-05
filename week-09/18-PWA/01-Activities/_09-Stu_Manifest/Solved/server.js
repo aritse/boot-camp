@@ -2,7 +2,11 @@ var express = require("express");
 var mongoose = require("mongoose");
 
 var app = express();
+<<<<<<< HEAD
 var PORT = process.env.PORT || 3000;
+=======
+var PORT = process.env.PORT || 3001;
+>>>>>>> upstream/master
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));

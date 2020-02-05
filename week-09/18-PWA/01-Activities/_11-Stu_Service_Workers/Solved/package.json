@@ -2,7 +2,11 @@
   "name": "images-demo",
   "version": "1.0.0",
   "description": "",
+<<<<<<< HEAD
   "main": "server.js",
+=======
+  "main": "index.js",
+>>>>>>> upstream/master
   "scripts": {
     "seed": "node seeders/seed.js"
   },
@@ -11,6 +15,10 @@
   "dependencies": {
     "express": "^4.16.4",
     "glob": "^7.1.4",
+<<<<<<< HEAD
+=======
+    "mlab": "^1.0.30-beta",
+>>>>>>> upstream/master
     "mongoose": "^5.5.8"
   }
 }

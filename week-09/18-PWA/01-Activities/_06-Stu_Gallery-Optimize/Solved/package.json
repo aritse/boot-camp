@@ -2,7 +2,11 @@
   "name": "images-demo",
   "version": "1.0.0",
   "description": "",
+<<<<<<< HEAD
   "main": "server.js",
+=======
+  "main": "index.js",
+>>>>>>> upstream/master
   "scripts": {
     "seed": "node seeders/seed.js"
   },

@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 const express = require("express");
 const mongoose = require("mongoose");
 const compression = require("compression");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+=======
+var express = require("express");
+var mongoose = require("mongoose");
+var compression = require("compression");
+
+var app = express();
+var PORT = process.env.PORT || 3000;
+>>>>>>> upstream/master
 
 app.use(compression());
 app.use(express.static("public"));

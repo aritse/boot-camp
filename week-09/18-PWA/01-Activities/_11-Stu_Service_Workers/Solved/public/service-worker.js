@@ -1,1 +1,1 @@
-console.log("Hello, my name is Service Worker");
+console.log("Hello from your service worker!");
