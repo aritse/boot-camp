@@ -72,7 +72,7 @@
         }
     </style>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.webmanifest">
 </head>
 
 <body>
@@ -97,13 +97,17 @@
     <div id="results"></div>
     <script src="app.js"></script>
     <script>
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator.serviceWorker.register("service-worker.js").then(reg => {
-                    console.log("We found your service worker file!", reg);
-                });
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker is registered', registration);
+                    })
+                    .catch(err => {
+                        console.error('Registration failed:', err);
+                    });
             });
-        }
+        }    
     </script>
 
 </body>
