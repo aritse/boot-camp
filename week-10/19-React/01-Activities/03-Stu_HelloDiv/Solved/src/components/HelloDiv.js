@@ -3,12 +3,12 @@ import React from "react";
 function HelloDiv() {
   return (
     <div>
-      <h1>Hey guys! I'm a header!</h1>
-      <h2>Things I like!</h2>
+      <h1>Hello, my name is Ari.</h1>
+      <h2> I like the following:</h2>
       <ul>
-        <li>Peas</li>
-        <li>Carrots</li>
-        <li>Love</li>
+        <li>Coding</li>
+        <li>Ping-pong</li>
+        <li>Basketball</li>
       </ul>
     </div>
   );
