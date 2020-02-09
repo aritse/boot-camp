@@ -2,13 +2,9 @@ let transactions = [];
 let myChart;
 
 fetch("/api/transaction")
-<<<<<<< HEAD
   .then(response => {
     return response.json();
   })
-=======
-  .then(response => response.json())
->>>>>>> upstream/master
   .then(data => {
     // save db data on global variable
     transactions = data;
@@ -83,26 +79,10 @@ function populateChart() {
   });
 }
 
-<<<<<<< HEAD
-function resetBudget() {
-  fetch("/api/transaction", {
-    method: "DELETE",
-    headers: {
-      Accept: "application/json, text/plain, */*",
-      "Content-Type": "application/json"
-    }
-  }).then(response => {
-    return response.json();
-  });
-  location.reload(true);
-}
-
-=======
->>>>>>> upstream/master
 function sendTransaction(isAdding) {
   const nameEl = document.querySelector("#t-name");
   const amountEl = document.querySelector("#t-amount");
-  const errorEl = document.querySelector("form .error");
+  const errorEl = document.querySelector(".form .error");
 
   // validate form
   if (nameEl.value === "" || amountEl.value === "") {
@@ -141,13 +121,9 @@ function sendTransaction(isAdding) {
       "Content-Type": "application/json"
     }
   })
-<<<<<<< HEAD
     .then(response => {
       return response.json();
     })
-=======
-    .then(response => response.json())
->>>>>>> upstream/master
     .then(data => {
       if (data.errors) {
         errorEl.textContent = "Missing Information";
@@ -167,7 +143,6 @@ function sendTransaction(isAdding) {
     });
 }
 
-<<<<<<< HEAD
 document.querySelector("#add-btn").onclick = function() {
   event.preventDefault();
   sendTransaction(true);
@@ -177,23 +152,3 @@ document.querySelector("#sub-btn").onclick = function() {
   event.preventDefault();
   sendTransaction(false);
 };
-document.querySelector("#reset-btn").onclick = function() {
-  event.preventDefault();
-  resetBudget();
-};
-=======
-document.querySelector("#add-btn").addEventListener("click", function(event) {
-  event.preventDefault();
-  sendTransaction(true);
-});
-
-document.querySelector("#sub-btn").addEventListener("click", function(event) {
-  event.preventDefault();
-  sendTransaction(false);
-});
-
-document.querySelector("#del-btn").addEventListener("click", function(event) {
-  event.preventDefault();
-  deletePending();
-});
->>>>>>> upstream/master
