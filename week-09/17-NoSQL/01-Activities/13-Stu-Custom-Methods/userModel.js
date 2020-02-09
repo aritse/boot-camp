@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 // Create the required custom methods at the bottom of this file
 
-=======
->>>>>>> upstream/master
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
@@ -49,7 +46,6 @@ const UserSchema = new Schema({
   fullName: String
 });
 
-<<<<<<< HEAD
 // setFullName: sets the current user's `fullName` property to their lastName appended to their `firstName`
 UserSchema.methods.setFullName = function() {
   this.fullName = this.firstName + " " + this.lastName;
@@ -66,20 +62,4 @@ UserSchema.methods.lastUpdatedDate = function() {
 const User = mongoose.model("User", UserSchema);
 
 // Export the User model
-=======
-UserSchema.methods.setFullName = function() {
-  this.fullName = `${this.firstName} ${this.lastName}`;
-
-  return this.fullName;
-};
-
-UserSchema.methods.lastUpdatedDate = function() {
-  this.lastUpdated = Date.now();
-
-  return this.lastUpdated;
-};
-
-const User = mongoose.model("User", UserSchema);
-
->>>>>>> upstream/master
 module.exports = User;
