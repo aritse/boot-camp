@@ -6,13 +6,13 @@ const UserSchema = new Schema({
   username: {
     type: String,
     trim: true,
-    required: "Username is Required"
+    required: "Username is required"
   },
 
   password: {
     type: String,
     trim: true,
-    required: "Password is Required",
+    required: "Password is required",
     validate: [({ length }) => length >= 6, "Password should be longer."]
   },
 

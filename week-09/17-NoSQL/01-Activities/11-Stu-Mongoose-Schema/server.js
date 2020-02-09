@@ -2,9 +2,9 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-const User = require("./userModel.js");
+const User = require("./userModel.js.js");
 const app = express();
 
 app.use(logger("dev"));
@@ -16,23 +16,10 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userdb", { useNewUrlParser: true });
 
-<<<<<<< HEAD
 app.post("/submit", (req, res) => {
   User.create(req.body)
     .then(dbUser => res.json(dbUser))
     .catch(err => res.json(err));
-=======
-app.post("/submit", ({ body }, res) => {
-  User.create(body)
-    .then(dbUser => {
-      res.json(dbUser);
-    })
-    .catch(err => {
-      res.json(err);
-    });
->>>>>>> upstream/master
 });
 
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`);
-});
+app.listen(port, () => console.log(`express app listening on ${port}`));

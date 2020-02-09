@@ -18,19 +18,13 @@ app.use(express.static("public"));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethods", { useNewUrlParser: true });
 
 app.post("/submit", ({ body }, res) => {
-  const user = new User(body);
-  user.coolifier();
-  user.makeCool();
+  const newUser = new User(body);
+  newUser.coolifier();
+  newUser.makeCool();
 
-  User.create(user)
-    .then(dbUser => {
-      res.json(dbUser);
-    })
-    .catch(err => {
-      res.json(err);
-    });
+  User.create(newUser)
+    .then(dbUser => res.json(dbUser))
+    .catch(err => res.json(err));
 });
 
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`);
-});
+app.listen(PORT, () => console.log(`App running on port ${PORT}!`));
