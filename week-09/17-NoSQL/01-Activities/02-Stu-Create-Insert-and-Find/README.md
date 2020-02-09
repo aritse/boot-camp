@@ -6,15 +6,21 @@
 
   ```sql
   use classroom;
+  db;
   ```
 
 - Insert entries for yourself and the people in your row in a `students` collection.
 
   ```sql
-  db.students.insert({"name" : "Isabel", "rowNumber" : 3, "os" : "Mac", "hobbies" : [ "shopping", "basket weaving" ], "gaveCandy" : false });
-  db.students.insert({"name" : "Alexa", "rowNumber" : 1, "os" : "Mac", "hobbies" : [ "partying", "driving" ], "gaveCandy" : false });
-  db.students.insert({"name" : "Ari", "rowNumber" : 1, "os" : "Win", "hobbies" : [ "Ping pong", "coding"], "gaveCandy" : true });
-  db.students.insert({"name" : "Joe", "rowNumber" : 2, "os" : "Mac", "hobbies" : [ "jokes", "coding" ], "gaveCandy":true });
+  db.students.insertMany([
+      {"name" : "A", "rowNumber" : 2, "os" : "Mac", "hobbies" : [ "X", "Y" ]},
+      {"name" : "B", "rowNumber" : 1, "os" : "Win", "hobbies" : [ "W", "Y" ]},
+      {"name" : "C", "rowNumber" : 2, "os" : "Mac", "hobbies" : [ "T", "W" ]},
+      {"name" : "D", "rowNumber" : 1, "os" : "Mac", "hobbies" : [ "Z" ]},
+      {"name" : "E", "rowNumber" : 1, "os" : "Mac", "hobbies" : [ "X", "Y" ]},
+      {"name" : "F", "rowNumber" : 2, "os" : "Win", "hobbies" : [ "W", "Z" ]},
+      {"name" : "G", "rowNumber" : 1, "os" : "Win", "hobbies" : [ "X", "Y", "Z" ]}
+  ]);
   ```
 
 - Each document should have:
@@ -29,19 +35,19 @@
   - A list of everyone in your row.
 
   ```sql
-  db.students.find({rowNumber:1}).pretty();
+  db.students.find({rowNumber:1});
   ```
 
   - An entry for a single person.
 
   ```sql
-  db.students.find({name:"Joe"}).pretty();
+  db.students.find({name:"C"}).pretty();
   ```
 
   The entries for all the Mac users in your row.
 
   ```sql
-  db.students.find({os:"Mac"}).pretty();
+  db.students.find({rowNumber:2, os:"Mac"});
   ```
 
 ## 💡 Hint(s)
@@ -53,6 +59,6 @@
 - If you finish early, check out the MongoDB documentation and figure out how to find users by an entry in an array.
 
   ```sql
-  db.students.find({hobbies:"jokes"}).pretty();
-  db.students.find({hobbies: {$in: ["coding"]}})
+  db.students.find({hobbies:"X"});
+  db.students.find({hobbies: {$in: ["X"]}})
   ```
