@@ -24,6 +24,8 @@ function reset(e) {
   const total = 2000;
   balanceEl.innerText = total;
   expensesListEl.innerHTML = "";
+  priceEl.textContent = "";
+  expenseEl.textContent = "";
   useIndexedDb("expense", "expensesStore", "clear");
 }
 

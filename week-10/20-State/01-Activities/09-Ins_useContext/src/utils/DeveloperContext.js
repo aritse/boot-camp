@@ -1,10 +1,10 @@
 import React from "react";
 
 const DeveloperContext = React.createContext({
-  name: "",
-  mood: "",
-  lifeLongLearner: false,
-  excitementLevel: 0
+  search: "",
+  title: "",
+  desciption: "",
+  url: ""
 });
 
 export default DeveloperContext;
