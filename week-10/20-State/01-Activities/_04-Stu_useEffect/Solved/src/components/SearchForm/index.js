@@ -17,9 +17,12 @@ function SearchForm(props) {
           placeholder="Type in a search term to begin"
           id="term"
         />
+<<<<<<< HEAD
         <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
           Search
         </button>
+=======
+>>>>>>> upstream/master
       </div>
     </form>
   );

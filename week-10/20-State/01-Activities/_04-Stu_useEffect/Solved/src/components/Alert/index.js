@@ -1,6 +1,10 @@
 import React from "react";
 
+<<<<<<< HEAD
 const Alert = props => {
+=======
+function Alert(props) {
+>>>>>>> upstream/master
   return (
     <div
       role="alert"
@@ -10,6 +14,10 @@ const Alert = props => {
       {props.children}
     </div>
   );
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> upstream/master
 
 export default Alert;

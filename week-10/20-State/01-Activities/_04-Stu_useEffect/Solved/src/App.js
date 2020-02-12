@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import "./App.css";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -10,6 +11,17 @@ import Signup from "./pages/Signup";
 import Search from "./pages/Search";
 
 const App = () => {
+=======
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Signup from "./pages/Signup";
+import Search from "./pages/Search";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Wrapper from "./components/Wrapper";
+import "./App.css";
+
+function App() {
+>>>>>>> upstream/master
   document.title = "Wikipedia Searcher";
   return (
     <Router>
@@ -24,6 +36,10 @@ const App = () => {
       </div>
     </Router>
   );
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> upstream/master
 
 export default App;
