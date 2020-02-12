@@ -35,7 +35,7 @@ const groceries = [
 ];
 
 function App() {
-  return <List groceries={groceries} />;
+  return <List groceries={groceries.filter(grocery => !grocery.purchased)} />;
 }
 
 export default App;
