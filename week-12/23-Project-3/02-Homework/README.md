@@ -2,9 +2,16 @@
 
 ## Application Requirements
 
-* Must use MERN stack
+* Must use MERN stack(Mongo/MySql, Express, React, and Node). This can be done as seperate applications.
 
-* Must use a CSS framework _other than_ Bootstrap
+* Must use a CSS framework _other than_ Bootstrap.
+
+* Must be deployed to Heroku with data
+
+* Must utilize at least two new libraries, packages, or technologies that we haven’t discussed
+
+* Must have a folder structure that meets the MVC paradigm
+
 
 
 ## Presentation Requirements
