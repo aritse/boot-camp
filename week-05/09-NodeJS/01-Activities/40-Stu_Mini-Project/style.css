@@ -1,0 +1,33 @@
+body {
+  background-image: url("./bio.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#name {
+  font-size: 4rem;
+  color: white;
+  padding-right: 3rem;
+}
+
+img {
+  width: 50px;
+}
+
+.links {
+  height: fit-content;
+  padding-left: 1rem;
+}
+
+#location,
+#bio {
+  text-align: end;
+  color: white;
+  padding-right: 3rem;
+}
