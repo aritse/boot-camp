@@ -2,12 +2,12 @@ const Word = require("../lib/Word");
 
 describe("Word class", () => {
   describe("guessLetter", () => {
-    it("Correct guess returns true", () => {
-      expect(new Word("fish").guessLetter("i")).toBe(true);
+    it("Correct guess returns number of occurrences", () => {
+      expect(new Word("fish").guessLetter("i")).toBe(1);
     });
 
-    it("Incorrect guess returns false", () => {
-      expect(new Word("fish").guessLetter("o")).toBe(false);
+    it("Incorrect guess returns 0", () => {
+      expect(new Word("fish").guessLetter("o")).toBe(0);
     });
   });
 

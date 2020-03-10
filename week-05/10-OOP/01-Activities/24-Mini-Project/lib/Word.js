@@ -13,7 +13,7 @@ class Word {
         count++;
       }
     });
-    return count > 0;
+    return count;
   }
 
   guessedCorrectly() {
@@ -21,9 +21,9 @@ class Word {
   }
 
   toString() {
-    console.log("toString() in word is called.");
-
-    this.word.toString();
+    let string = "";
+    this.word.forEach(letter => (string += " " + letter.toString()));
+    return string;
   }
 }
 

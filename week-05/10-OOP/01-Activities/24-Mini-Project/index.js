@@ -1,20 +1,28 @@
+const randomWords = require("random-words");
 const Word = require("./lib/Word");
 const inquirer = require("inquirer");
-const randomWords = require("random-words");
 
-async function start() {
-  let rw = randomWords();
-  console.log(rw);
-  let word = new Word(rw);
-  word.toString();
-  //   console.log(word);
+async function play() {
+  let randomWord = "";
+  while (randomWord.length < 8) randomWord = randomWords();
 
+  let word = new Word(randomWord);
+
+  console.log(word.toString());
   while (!word.guessedCorrectly()) {
-    const guess = await inquirer.prompt([{ type: "input", name: "guess", message: "What is your guess?" }]);
-    word.guessLetter(guess);
-    console.log(word);
+    const { guess } = await inquirer.prompt([{ type: "input", name: "guess", message: "Give me a letter: " }]);
+    const count = word.guessLetter(guess);
+    if (count > 0) {
+      const singular = `is one ${guess}.`;
+      const plural = `are ${count} ${guess}'s.`;
+      console.log(`Yes, there ${count > 1 ? plural : singular}`);
+      console.log(word.toString());
+    } else {
+      console.log(`There is no ${guess}.`);
+    }
   }
-  //  keeps track of the user's remaining guesses
+  console.log(`You guessed the word correctly: ${randomWord}`);
+  process.exit();
 }
 
-start();
+play();
