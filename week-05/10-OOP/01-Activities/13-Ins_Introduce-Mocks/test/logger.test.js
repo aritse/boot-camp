@@ -14,14 +14,17 @@ const colors = {
 describe("Logger", () => {
   describe("colors", () => {
     it("should print in black", () => {
-      const log = new Logger();
-      const message = "Hello world!";
+      // Arrange
+      // spyOn(<object>, <method>)
       const mock = jest.spyOn(console, "log");
+
+      // do something or nothing
       mock.mockImplementation(() => {});
 
-      log.black(message);
+      const log = new Logger();
+      log.black("hello");
 
-      expect(mock).toBeCalledWith(colors.black, message);
+      expect(mock).toBeCalledWith(colors.black, "hello");
 
       mock.mockRestore();
     });

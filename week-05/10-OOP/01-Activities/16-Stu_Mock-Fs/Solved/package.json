@@ -1,14 +1,15 @@
 {
-  "name": "16-stu_mock-fs",
+  "name": "Unsolved",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "test": "jest"
   },
+  "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "jest": "^24.9.0"
-  }
+  "license": "ISC"
 }

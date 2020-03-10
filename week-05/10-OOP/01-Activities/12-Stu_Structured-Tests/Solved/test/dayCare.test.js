@@ -3,88 +3,104 @@ const Child = require("../child");
 
 describe("DayCare", () => {
   describe("Initialization", () => {
-    it("should create an object with 'children' array, 'capacity' number, and 'ageLimit' number", () => {
+    // Positve test
+    it("should create an object with children property set to an empty array when called with the new keyword", () => {
+      // Arrange
       const dayCare = new DayCare();
 
+      // Assert
       expect(dayCare).toEqual({ children: [], capacity: 3, ageLimit: 6 });
     });
   });
-
   describe("addChild", () => {
-    it("should add a child to the 'children' array", () => {
-      const child = new Child("Tammy", 1);
+    // Positive tests
+    it("should add a new child to its children array", () => {
+      // Arrange
       const dayCare = new DayCare();
+      const name = "Morgan";
+      const age = 4;
+      const child = new Child(name, age);
 
+      // Act
       dayCare.addChild(child);
 
+      // Assert
       expect(dayCare.children.length).toEqual(1);
       expect(dayCare.children[0]).toBe(child);
     });
 
-    it("should not add a child over the 'ageLimit'", () => {
-      const child = new Child("Tammy", 8);
+    // Exception test
+    it("should throw an error if not provided child", () => {
+      // Arrange
       const dayCare = new DayCare();
+      const err = new Error("Expected parameter 'child' to be an instance of Child");
+      const cb = () => dayCare.addChild();
 
-      dayCare.addChild(child);
-
-      expect(dayCare.children.length).toEqual(0);
-    });
-
-    it("should not add a child if already at capacity", () => {
-      const dayCare = new DayCare();
-      const child = new Child("Alice", 4);
-      dayCare.children = [
-        new Child("Tammy", 1),
-        new Child("Mark", 2),
-        new Child("Alvin", 1)
-      ];
-
-      dayCare.addChild(child);
-
-      expect(dayCare.children.length).toEqual(3);
-    });
-
-    it("should throw an error if not provided a Child object as an argument", () => {
-      const err = new Error(
-        "Expected parameter 'child' to be an instance of Child"
-      );
-      const cb = () => {
-        const dayCare = new DayCare();
-        dayCare.addChild();
-      };
-
+      // Assert
       expect(cb).toThrowError(err);
     });
-  });
 
-  describe("pickupChild", () => {
-    it("should remove the first child found with a given name from 'children' and return it", () => {
+    // Negative tests
+    it("should not add a new child to its children array if over age limit", () => {
+      // Arrange
       const dayCare = new DayCare();
-      const child1 = new Child("Tammy", 1);
-      const child2 = new Child("Mark", 2);
-      const child3 = new Child("Alvin", 1);
-      dayCare.children = [child1, child2, child3];
+      const name = "Morgan";
+      const age = 9;
+      const child = new Child(name, age);
 
-      const removed = dayCare.pickupChild(child2.name);
+      // Act
+      dayCare.addChild(child);
 
-      expect(removed).toBe(child2);
-      expect(dayCare.children.length).toEqual(2);
-      expect(
-        dayCare.children.some(child => child.name === child2.name)
-      ).toEqual(false);
+      // Assert
+      expect(dayCare.children.length).toEqual(0);
+    });
+    it("should not add a new child to its children array if capacity reached", () => {
+      // Arrange
+      const dayCare = new DayCare();
+      dayCare.addChild(new Child("A", 3));
+      dayCare.addChild(new Child("B", 3));
+      dayCare.addChild(new Child("C", 3));
+
+      // Act
+      dayCare.addChild(new Child("D", 3));
+
+      // Assert
+      expect(dayCare.children.length).toEqual(dayCare.capacity);
+    });
+  });
+  describe("pickupChild", () => {
+    // Positve tests
+    it("should return a child", () => {
+      // Arrange
+      const dayCare = new DayCare();
+      const childA = new Child("A", 3);
+      const childB = new Child("B", 3);
+      let pickedupChild;
+
+      // Act
+      dayCare.addChild(childA);
+      dayCare.addChild(childB);
+      pickedupChild = dayCare.pickupChild("A");
+
+      // Assert
+      expect(pickedupChild).toEqual(childA);
+      expect(dayCare.children.length).toEqual(1);
+      expect(dayCare.children.some(child => child.name === childA.name)).toEqual(false);
     });
 
-    it("should return undefined and remove no children if child is not in 'children'", () => {
+    // Negative tests
+    it("should return undefined if there is no child with that name", () => {
+      // Arrange
       const dayCare = new DayCare();
-      const child1 = new Child("Tammy", 1);
-      const child2 = new Child("Mark", 2);
-      const child3 = new Child("Alvin", 1);
-      dayCare.children = [child1, child2, child3];
+      const childA = new Child("A", 3);
+      let pickedupChild;
 
-      const removed = dayCare.pickupChild("Fred");
+      // Act
+      dayCare.addChild(childA);
+      pickedupChild = dayCare.pickupChild("C");
 
-      expect(typeof removed).toEqual("undefined");
-      expect(dayCare.children).toEqual([child1, child2, child3]);
+      // Assert
+      expect(typeof pickedupChild).toEqual("undefined");
     });
   });
 });

@@ -1,44 +1,52 @@
-const fs = require("fs");
 const FileIO = require("../fileIO");
+const fs = require("fs");
 
-jest.mock("fs");
+jest.mock("fs"); // jest is mocking the file system (FS) module
 
 describe("FileIO", () => {
   describe("read", () => {
     it("should call fs.readFileSync with the passed in 'file' argument", () => {
+      // Arrange
+      fs.readFileSync.mockReturnValue("Hello");
       const fileIO = new FileIO();
-      const file = "message.txt";
-      let data;
-      
-      fs.readFileSync.mockReturnValue("Hello World!");
-      data = fileIO.read(file);
+      const file = "messages.txt";
 
-      expect(data).toEqual("Hello World!");
+      // Act
+      const message = fileIO.read(file);
+
+      // Assert
+      expect(message).toEqual("Hello");
       expect(fs.readFileSync).lastCalledWith(file, "utf8");
     });
   });
 
   describe("write", () => {
-    it("should call fs.writeFileSync with the passed in 'path' and 'data' arguments", () => {
+    it("should call fs.writeFileSync with the passed in 'file' and 'message' arguments", () => {
+      // Arrange
       const fileIO = new FileIO();
-      const path = "message.txt";
-      const data = "Hello World!";
-    
-      fileIO.write(path, data);
+      const file = "messages.txt";
+      const message = "Hey";
 
-      expect(fs.writeFileSync).lastCalledWith(path, data);
+      // Act
+      fileIO.write(file, message);
+
+      // Assert
+      expect(fs.writeFileSync).lastCalledWith(file, message);
     });
   });
 
   describe("append", () => {
-    it("should call fs.appendFileSync with the passed in 'file' and 'data' arguments", () => {
+    it("should call fs.appendFileSync with the passed in 'file' and 'message' arguments", () => {
+      // Arrange
       const fileIO = new FileIO();
-      const file = "message.txt";
-      const data = "Goodbye World!";
-    
-      fileIO.append(file, data);
+      const file = "messages.txt";
+      const message = "What's up";
 
-      expect(fs.appendFileSync).lastCalledWith(file, data);
+      // Act
+      fileIO.append(file, message);
+
+      // Assert
+      expect(fs.appendFileSync).lastCalledWith(file, message);
     });
   });
 });

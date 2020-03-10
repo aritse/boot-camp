@@ -2,44 +2,58 @@ const Child = require("../child");
 
 describe("Child", () => {
   describe("Initialization", () => {
-    it("should create an object with a name and age if provided valid arguments", () => {
-      const child = new Child("Sarah", 3);
+    // Positive test
+    it("should create an object with name and age properties", () => {
+      // Arrange
+      const name = "Morgan";
+      const age = 3;
 
-      expect(child.name).toEqual("Sarah");
-      expect(child.age).toEqual(3);
+      // Act
+      const child = new Child(name, age);
+
+      // Asert
+      expect(child.name).toEqual(name);
+      expect(child.age).toEqual(age);
     });
-
-    it("should throw an error if provided no arguments", () => {
+    // Exception test
+    it("should throw an error if not provided a name", () => {
+      // Arrange
       const cb = () => new Child();
-
-      expect(cb).toThrow();
-    });
-
-    it("should throw an error if not provided an age", () => {
-      const cb = () => new Child("Sarah");
-      const err = new Error("Expected parameter 'age' to be a non-negative number");
-
-      expect(cb).toThrowError(err);
-    });
-
-    it("should throw an error if 'name' is not a string", () => {
-      const cb = () => new Child(3, 2);
       const err = new Error("Expected parameter 'name' to be a non-empty string");
 
+      // Assert
       expect(cb).toThrowError(err);
     });
-
-    it("should throw an error if 'age' is not a number", () => {
-      const cb = () => new Child("Sarah", "2");
+    it("should throw an error if not provided age", () => {
+      // Arrange
+      const cb = () => new Child("Morgan");
       const err = new Error("Expected parameter 'age' to be a non-negative number");
 
+      // Assert
       expect(cb).toThrowError(err);
     });
+    it("should throw an error if name is not a string", () => {
+      // Arrange
+      const cb = () => new Child(3, 3);
+      const err = new Error("Expected parameter 'name' to be a non-empty string");
 
-    it("should throw an error if 'age' is less than 0", () => {
-      const cb = () => new Child("Sarah", -1);
+      // Assert
+      expect(cb).toThrowError(err);
+    });
+    it("should throw an error if age is negative", () => {
+      // Arrange
+      const cb = () => new Child("Morgan", -3);
       const err = new Error("Expected parameter 'age' to be a non-negative number");
 
+      // Assert
+      expect(cb).toThrowError(err);
+    });
+    it("should throw an error if age is not a number", () => {
+      // Arrange
+      const cb = () => new Child("Morgan", "3");
+      const err = new Error("Expected parameter 'age' to be a non-negative number");
+
+      // Assert
       expect(cb).toThrowError(err);
     });
   });

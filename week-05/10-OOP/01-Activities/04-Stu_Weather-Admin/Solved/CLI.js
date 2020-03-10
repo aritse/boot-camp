@@ -9,12 +9,8 @@ const userName = process.argv[3];
 // And they will need to provide a "location"
 const userLocation = process.argv[4];
 
-// Create an instance of the WeatherAdmin. Remember WeatherAdmin is a constructor! Not an object.
+// Create an instance of the WeatherAdmin
 const myAdmin = new WeatherAdmin();
 
-if (loginType === "admin") {
-  myAdmin.getData();
-}
-else {
-  myAdmin.newUserSearch(userName, userLocation);
-}
+if (loginType === "admin") myAdmin.getData();
+else myAdmin.newUserSearch(userName, userLocation);

@@ -2,14 +2,8 @@ const FileIO = require("./fileIO");
 
 const fileIO = new FileIO();
 
-fileIO.write("message.txt", "Hello World!");
+fileIO.write("messages.txt", "Hello World!");
 
-let message = fileIO.read("message.txt");
-
-console.log(message);
-
-fileIO.append("message.txt", "\nGoodbye World!");
-
-message = fileIO.read("message.txt");
+const message = fileIO.read("messages.txt");
 
 console.log(message);

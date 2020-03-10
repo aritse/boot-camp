@@ -4,47 +4,55 @@ const fs = require("fs");
 // Create the TV constructor
 const TV = function() {};
 
-TV.prototype.findActor = function(actor) {
-  const URL = "http://api.tvmaze.com/search/people?q=" + actor;
+// Find a tv show actor
+TV.prototype.findActor = name => {
+  const URL = `http://api.tvmaze.com/search/people?q=${name}`;
+  axios
+    .get(URL)
+    .then(({ data }) => {
+      const record = data[0];
+      console.log("DATA:", record);
 
-  axios.get(URL).then(response => {
-    const actorData = [
-      "Name: " + response.data[0].person.name,
-      "Birthday: " + response.data[0].person.birthday,
-      "Gender: " + response.data[0].person.gender,
-      "Country: " + response.data[0].person.country.name,
-      "URL: " + response.data[0].person.url,
-      "-".repeat(60)
-    ].join("\n\n");
+      const showData = [
+        "\nName: " + record.person.name,
+        "Birthday: " + record.person.birthday,
+        "Gender: " + record.person.gender,
+        "Country: " + (record.person.country ? record.person.country.name : ""),
+        "TV Maze URL: " + record.person.url,
+        "-".repeat(60)
+      ].join("\n");
 
-    fs.appendFile("log.txt", actorData, err => {
-      if (err) {
-        throw err;
-      }
-      console.log(actorData);
-    });
-  });
+      fs.appendFile("log.txt", showData, "utf8", err => {
+        if (err) throw err;
+        fs.readFile("log.txt", "utf8", (err, data) => console.log(data));
+      });
+    })
+    .catch();
 };
 
-TV.prototype.findShow = function(show) {
-  const URL = "http://api.tvmaze.com/singlesearch/shows?q=" + show;
+// Find a tv show
+TV.prototype.findShow = show => {
+  const URL = `http://api.tvmaze.com/singlesearch/shows?q=${show}`;
+  axios
+    .get(URL)
+    .then(({ data }) => {
+      console.log("DATA", data);
 
-  axios.get(URL).then(function(response) {
-    const showData = [
-      "Show: " + response.data.name,
-      "Genre(s): " + response.data.genres.join(", "),
-      "Rating: " + response.data.rating.average,
-      "Network: " + response.data.network.name,
-      "Summary: " + response.data.summary,
-      "-".repeat(60)
-    ].join("\n\n");
+      const showData = [
+        "\nShow: " + data.name,
+        "Genre(s): " + data.genres.join(", "),
+        "Rating: " + data.rating.average,
+        "Network: " + data.network.name,
+        "TV Maze URL: " + data.url,
+        "-".repeat(60)
+      ].join("\n");
 
-    fs.appendFile("log.txt", showData, err => {
-      if (err) throw err;
-
-      console.log(showData);
-    });
-  });
+      fs.appendFile("log.txt", showData, "utf8", err => {
+        if (err) throw err;
+        fs.readFile("log.txt", "utf8", (err, data) => console.log(data));
+      });
+    })
+    .catch();
 };
 
 module.exports = TV;
