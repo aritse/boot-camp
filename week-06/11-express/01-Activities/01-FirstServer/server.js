@@ -8,6 +8,7 @@ const PORT = 8080;
 function handleRequest(request, response) {
   // Send the below string to the client when the user visits the PORT URL
   response.end("It Works!! Path Hit: " + request.url);
+  console.log("received a request on ", request.url);
 }
 
 // Use the Node HTTP package to create our server.
