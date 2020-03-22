@@ -1,10 +1,15 @@
 import React from "react";
-import "./Header.css";
+import "../styles/Header.css";
+
+const style = {
+  background: "red",
+  fontSize: "100px"
+};
 
 function Header() {
   return (
-    <header className="header">
-      <h1>Home</h1>
+    <header className="header" style={style}>
+      <h1>Welcome</h1>
     </header>
   );
 }

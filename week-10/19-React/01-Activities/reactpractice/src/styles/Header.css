@@ -1,5 +1,5 @@
 .header {
-  background: #cc0000;
+  background: #b71775;
   height: 200px;
 }
 
@@ -9,4 +9,5 @@
   text-align: center;
   color: white;
   font-size: 3rem;
+  font-family: "Times New Roman", Times, serif;
 }

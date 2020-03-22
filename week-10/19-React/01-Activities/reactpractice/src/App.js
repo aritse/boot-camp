@@ -1,16 +1,15 @@
 import React from "react";
-import Navbar from "./components/Navbar";
 import Header from "./components/Header";
-import Card from "./components/Card";
+import Section from "./components/Section";
+
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div>
-      <Header />
       <Navbar />
-      <Card />
-      <Card />
-      <Card />
+      <Header />
+      <Section />
     </div>
   );
 }
