@@ -22,7 +22,7 @@ function Calculator() {
         96 / 4 = <Math num1="96" operator="/" num2="4" />
       </p>
       <p>
-        96 / 4 = <Math num1="96" operator="%" num2="4" />
+        96 % 80 = <Math num1="96" operator="%" num2="80" />
       </p>
     </div>
   );

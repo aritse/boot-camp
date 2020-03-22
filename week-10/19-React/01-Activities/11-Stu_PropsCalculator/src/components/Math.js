@@ -17,6 +17,9 @@ function Math(props) {
     case "/":
       ans = a / b;
       break;
+    case "%":
+      ans = a % b;
+      break;
     default:
       ans = "invalid operator";
       break;

@@ -1,8 +1,8 @@
 import React from "react";
-import Alert from "./components/Alert";
+import Calculator from "./components/Calculator";
 
 function App() {
-  return <Alert type="danger">Invalid user id or password</Alert>;
+  return <Calculator />;
 }
 
 export default App;
