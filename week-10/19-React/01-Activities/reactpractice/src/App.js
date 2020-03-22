@@ -1,17 +1,8 @@
 import React from "react";
-import Header from "./components/Header";
-import Section from "./components/Section";
-
-import Navbar from "./components/Navbar";
+import Alert from "./components/Alert";
 
 function App() {
-  return (
-    <div>
-      <Navbar />
-      <Header />
-      <Section />
-    </div>
-  );
+  return <Alert type="danger">Invalid user id or password</Alert>;
 }
 
 export default App;
