@@ -2,6 +2,8 @@ import React from "react";
 import "./style.css";
 
 function FriendCard(props) {
+  const handleClick = ({ target: { id } }) => props.handleClick(id);
+
   return (
     <div className="card">
       <div className="img-container">
@@ -20,7 +22,9 @@ function FriendCard(props) {
           </li>
         </ul>
       </div>
-      <span className="remove">𝘅</span>
+      <span className="remove" id={props.id} onClick={handleClick}>
+        𝘅
+      </span>
     </div>
   );
 }
