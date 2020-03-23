@@ -5,7 +5,7 @@ import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 
-class Portfolio extends Component {
+class PortfolioContainer extends Component {
   state = {
     currentPage: "Home"
   };
@@ -15,28 +15,26 @@ class Portfolio extends Component {
   };
 
   renderPage = () => {
-    if (this.state.currentPage === "Home") {
-      return <Home />;
-    } else if (this.state.currentPage === "About") {
-      return <About />;
-    } else if (this.state.currentPage === "Blog") {
-      return <Blog />;
-    } else {
-      return <Contact />;
+    switch (this.state.currentPage) {
+      case "About":
+        return <About />;
+      case "Blog":
+        return <Blog />;
+      case "Contact":
+        return <Contact />;
+      default:
+        return <Home />;
     }
   };
 
   render() {
     return (
       <div>
-        <NavTabs
-          currentPage={this.state.currentPage}
-          handlePageChange={this.handlePageChange}
-        />
+        <NavTabs currentPage={this.state.currentPage} handlePageChange={this.handlePageChange} />
         {this.renderPage()}
       </div>
     );
   }
 }
 
-export default Portfolio;
+export default PortfolioContainer;
