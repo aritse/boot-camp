@@ -10,7 +10,7 @@ const groceries = [
   {
     id: 2,
     name: "Eggs",
-    purchased: true
+    purchased: false
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const groceries = [
 ];
 
 function App() {
-  return <List groceries={groceries.filter(grocery => !grocery.purchased)} />;
+  return <List groceries={groceries.filter(item => !item.purchased)} />;
 }
 
 export default App;
