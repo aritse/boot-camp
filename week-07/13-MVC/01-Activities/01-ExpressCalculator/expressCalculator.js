@@ -27,7 +27,7 @@ app.get("/:operator/:operand1/:operand2", (req, res) => {
       result = operand1 / operand2;
       break;
     default:
-      result = "Sorry! The only valid operators are add (+), subtract (-), multiply (*), and divide (:).";
+      result = "Invalid operator! Please enter one of ['add', '+', 'subtract', '-', 'multiply', '*', 'divide', ':']";
   }
 
   res.send(result.toString());
