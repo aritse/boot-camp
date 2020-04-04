@@ -8,4 +8,7 @@ fs.readFile("./data.csv", "utf8", (error, data) => {
   console.log(data);
 });
 
+// readFileSync returns the data read synchronously meaning it blocks the execution until the method comes back
+// console.log(fs.readFileSync("./data.csv", "utf8"));
+
 console.log("This line prints first even though it is after readFile() because readFile() is an async function.");
