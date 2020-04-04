@@ -9,20 +9,18 @@ const connection = mysql.createConnection({
   port: 3306,
   user: "root",
   password: "password",
-  database: "wizard_schools_db"
+  database: "wizard_schools_db",
 });
 
-connection.connect(err => {
-  if (err) throw "error connecting: " + err.stack;
-  console.log("connected as id " + connection.threadId);
+connection.connect((err) => {
+  if (err) throw `error connecting: ${err.stack}`;
+  console.log(`connected as id ${connection.threadId}`);
 });
 
 // Routes
 app.get("/", (req, res) => {
-  console.log("hit");
-
-  // If the main route is hit, then we initiate a SQL query to grab all records.
-  // All of the resulting records are stored in the variable "records".
+  // If the main route is hit, then we initiate a SQL query to grab all records
+  // All of the resulting records are stored in the variable "records"
   connection.query("SELECT * FROM schools", (err, records) => {
     if (err) throw err;
 
@@ -31,18 +29,18 @@ app.get("/", (req, res) => {
     html += "<ul>";
 
     // We then use the retrieved records from the database to populate our HTML file.
-    records.forEach(record => {
+    records.forEach((record) => {
       html += `
       <li>
-        <p> ID: ${record.id}</p>
-        <p> School: " ${record.name}</p>
+        <p> ID: ${record.id} </p>
+        <p> School: " ${record.name} </p>
       </li>
       `;
     });
 
     html += "</ul>";
 
-    // Finally we send the user the HTML file we dynamically created.
+    // Finally we send the user the HTML file we dynamically created
     res.send(html);
   });
 });
