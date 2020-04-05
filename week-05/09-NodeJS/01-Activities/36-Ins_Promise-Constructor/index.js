@@ -1,27 +1,27 @@
 const fs = require("fs");
 
-// function writeFileAsync(path, data) {
-//   return new Promise(function(resolve, reject) {
-//     fs.writeFile(path, data, function(err) {
-//       if (err) return reject(err);
-//       resolve();
-//     });
-//   });
-// }
+function writeFileAsyncPromise(path, data) {
+  return new Promise(function (resolve, reject) {
+    fs.writeFile(path, data, function (err) {
+      if (err) return reject(err);
+      resolve();
+    });
+  });
+}
 
 // A bit shorter
 const writeFileAsync = (path, data, encoding) => {
   return new Promise((resolve, reject) => {
-    fs.writeFile(path, data, encoding, err => {
+    fs.writeFile(path, data, encoding, (err) => {
       if (err) return reject(err);
       resolve();
     });
   });
 };
 
-writeFileAsync("example.txt", "Hello Promise!", "utf8")
+writeFileAsyncPromise("example.txt", "Hello Promise!", "utf8")
   .then(() => console.log("success"))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 // function readFileAsync(path, encoding) {
 //   return new Promise(function(resolve, reject) {
@@ -45,5 +45,5 @@ const readFileAsync = (path, encoding) => {
 };
 
 readFileAsync("example.txt", "utf8")
-  .then(data => console.log(data))
-  .catch(err => console.log(err));
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
