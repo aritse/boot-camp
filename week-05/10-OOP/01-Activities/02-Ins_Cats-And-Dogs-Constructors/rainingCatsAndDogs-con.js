@@ -2,10 +2,8 @@
 function Animal(raining, noise) {
   this.raining = raining;
   this.noise = noise;
-  this.makeNoise = function() {
-    if (this.raining === true) {
-      console.log(this.noise);
-    }
+  this.makeNoise = function () {
+    if (this.raining) console.log(this.noise);
   };
 }
 
@@ -17,14 +15,12 @@ const cats = new Animal(false, "Meow!");
 dogs.makeNoise();
 cats.makeNoise();
 
-// If we want, we can change an objects properties after they're created
+// If we want, we can change object's properties after they're created
 cats.raining = true;
 cats.makeNoise();
 
-const massHysteria = function(dogs, cats) {
-  if (dogs.raining === true && cats.raining === true) {
-    console.log("DOGS AND CATS LIVING TOGETHER! MASS HYSTERIA!");
-  }
+const massHysteria = (dogs, cats) => {
+  if (dogs.raining && cats.raining) console.log("DOGS AND CATS LIVING TOGETHER! MASS HYSTERIA!");
 };
 
 massHysteria(dogs, cats);

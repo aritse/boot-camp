@@ -1,28 +1,20 @@
 function createMiniBank(balance = 0) {
   this.balance = balance;
-  this.statement = [this.balance];
+  this.statement = [balance];
 
-  this.setBalance = function(amount) {
+  this.setBalance = function (amount) {
     this.balance = amount;
   };
 
-  this.getBalance = function() {
-    return this.balance;
-  };
-
-  this.updateStatement = function(amount) {
+  this.updateStatement = function (amount) {
     this.statement.push(amount);
   };
 
-  this.getStatement = function() {
-    return [...this.statement];
+  this.printStatement = function () {
+    this.statement.forEach((transaction) => console.log(`${transaction > 0 ? "Deposit" : "Withdraw"}: ${transaction}`));
   };
 
-  this.printStatement = function() {
-    this.statement.forEach(transaction => (transaction > 0 ? console.log("Deposit:", transaction) : console.log("Withdraw:", transaction)));
-  };
-
-  this.deposit = function(amount) {
+  this.deposit = function (amount) {
     if (amount > 0) {
       this.setBalance(this.balance + amount);
       this.updateStatement(amount);
@@ -31,7 +23,7 @@ function createMiniBank(balance = 0) {
     }
   };
 
-  this.withdraw = function(amount) {
+  this.withdraw = function (amount) {
     if (amount > 0) {
       if (amount > this.balance) {
         console.error("Error: Withdraw amount is greater than balance");
@@ -44,8 +36,8 @@ function createMiniBank(balance = 0) {
     }
   };
 
-  this.printBalance = function() {
-    console.log("Balance:", this.balance);
+  this.printBalance = function () {
+    console.log(`Balance: ${this.balance}`);
   };
 }
 
