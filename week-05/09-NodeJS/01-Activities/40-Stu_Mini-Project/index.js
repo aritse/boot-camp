@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
 
-const writeFileAsync = util.promisify(fs.writeFile);
+const writeFileAsyncPromise = util.promisify(fs.writeFile);
 
 async function create() {
   try {
@@ -10,28 +10,28 @@ async function create() {
       {
         type: "input",
         name: "name",
-        message: "What is your name?"
+        message: "What is your name?",
       },
       {
         type: "input",
         name: "location",
-        message: "What is your location?"
+        message: "What is your location?",
       },
       {
         type: "input",
         name: "bio",
-        message: "Tell about yourself (age, sex, hobby)"
+        message: "Tell about yourself (age, sex, hobby)",
       },
       {
         type: "input",
         name: "linkedin",
-        message: "What is your LinkedIn username?"
+        message: "What is your LinkedIn username?",
       },
       {
         type: "input",
         name: "github",
-        message: "What is your GitHub username?"
-      }
+        message: "What is your GitHub username?",
+      },
     ]);
 
     //#region HTML
@@ -68,9 +68,7 @@ async function create() {
     </html>`;
     //#endregion
 
-    writeFileAsync("index.html", html)
-      .then(() => console.log("Success"))
-      .catch(err => console.log("Failure"));
+    await writeFileAsyncPromise("index.html", html);
   } catch (err) {
     console.log(err);
   }
