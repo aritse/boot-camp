@@ -2,3 +2,4 @@
 Name: bob Location: Los Angeles, CA Date: 03-09-2020
 Name: ari Location: Seattle, WA Date: 03-09-2020
 Name: sarah Location: Miami, FL Date: 03-09-2020
+Name: Ari Location: Ulaanbaatar Date: 04-05-2020

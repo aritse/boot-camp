@@ -1,25 +1,25 @@
 const fs = require("fs");
-const UserSearch = require("./UserSearch");
 const moment = require("moment");
+const UserSearch = require("./UserSearch");
 
-const WeatherAdmin = function() {
-  this.getData = function() {
-    fs.readFile("log.txt", "utf8", (error, data) => {
-      if (data) console.log(data);
-      else console.log("No data");
+function WeatherAdmin() {
+  this.getData = function () {
+    fs.readFile("log.txt", "utf8", (err, data) => {
+      if (err) throw err;
+      console.log(`${data || "No data"}`);
     });
   };
 
-  this.newUserSearch = function(name, location) {
-    const newUserSearch = new UserSearch(name, location);
-    const logTxt = "\nName: " + newUserSearch.name + " Location: " + newUserSearch.location + " Date: " + moment(newUserSearch.date).format("MM-DD-YYYY");
+  this.newUserSearch = function (name, location) {
+    const userSearch = new UserSearch(name, location);
+    const logTxt = `\nName: ${name} Location: ${location} Date: ${moment(userSearch.date).format("MM-DD-YYYY")}`;
 
-    fs.appendFile("log.txt", logTxt, "utf-8", err => {
+    fs.appendFile("log.txt", logTxt, "utf-8", (err) => {
       if (err) throw err;
     });
 
-    newUserSearch.getWeather();
+    userSearch.getWeather();
   };
-};
+}
 
 module.exports = WeatherAdmin;
