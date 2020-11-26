@@ -15,7 +15,7 @@ function handleRequest(req, res) {
     case "/frameworks":
       return serve(res, "frameworks.html");
     default:
-      return serve(res);
+      return serve(res); // 404
   }
 }
 

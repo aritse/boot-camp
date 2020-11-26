@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Lottery Generator</title>
@@ -10,17 +11,16 @@
   <!-- Added a link to Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
+
 <body>
 
   <div class="jumbotron">
-
     <h1 class="text-center">Generate Lottery Numbers!</h1>
-
     <div class="text-center">
-
       <!-- Here we have our button with id random-button -->
-      <button id="random-button" class="btn btn-primary btn-lg"><h1>?</h1></button>
-
+      <button id="random-button" class="btn btn-primary btn-lg">
+        <h1>?</h1>
+      </button>
     </div>
 
   </div>
@@ -30,9 +30,9 @@
 
   <script type="text/javascript">
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
-      $("#random-button").on("click", function() {
+      $("#random-button").on("click", function () {
 
         // Create a string which will hold the lottery number
         var lottoNumber = "";
@@ -59,4 +59,5 @@
   </script>
 
 </body>
+
 </html>
