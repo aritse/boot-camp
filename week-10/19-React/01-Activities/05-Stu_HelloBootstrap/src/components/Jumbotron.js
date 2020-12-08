@@ -1,16 +1,14 @@
-import React from "react";
-
-function Jumbotron() {
+export default function Jumbotron() {
   return (
     <div className="jumbotron">
-      <h1 className="display-4">Hello, world!!!</h1>
+      <h1 className="display-4">Hello, world!</h1>
       <p className="lead">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+        Paragraph 1
       </p>
-      <hr className="my-4" />
-      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over</p>
+      <hr className="my-4"></hr>
+      <p>
+        Paragraph 2
+      </p>
     </div>
   );
 }
-
-export default Jumbotron;

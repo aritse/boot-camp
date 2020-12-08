@@ -3,14 +3,12 @@ import Navbar from "./components/Navbar";
 import Jumbotron from "./components/Jumbotron";
 import Card from "./components/Card";
 
-function App() {
+export default function App() {
   return (
     <div>
-      <Navbar />
-      <Jumbotron />
-      <Card />
+      <Navbar></Navbar>
+      <Jumbotron></Jumbotron>
+      <Card></Card>
     </div>
   );
 }
-
-export default App;
