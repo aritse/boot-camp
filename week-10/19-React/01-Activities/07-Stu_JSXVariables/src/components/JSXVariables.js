@@ -1,20 +1,24 @@
-import React from "react";
+export default function JSXVariables() {
+  const name = "Ariuntulga";
+  const letters = 10;
+  const comment = "React is awesome";
 
-function JSXVariables() {
-  const name = "Ariuntulga Tserendavaa";
-  const vowels = ["a", "e", "i", "o", "u", "y"];
   return (
     <div className="main-container">
       <div className="container">
         <div className="jumbotron">
-          <h1>Hi! My name is {name}.</h1>
-          <h2>My name has {name.length} letters</h2>
-          <h2>I think React {`is fun.`}</h2>
-          <h2>My name without any vowels is: {name.split("").filter(c => !vowels.includes(c))}</h2>
+          <h1>My name is {name} which has {letters} letters.</h1>
+          <h2>My name without any vowels is "{removeVowels(name)}".</h2>
+          <p>
+            {`I think ${comment}.`}
+          </p>
         </div>
       </div>
     </div>
   );
 }
 
-export default JSXVariables;
+function removeVowels(str) {
+  const vowels = ["a", "e", "i", "o", "u", "y"];
+  return str.toLowerCase().split("").filter(c => !vowels.includes(c)); 
+}
