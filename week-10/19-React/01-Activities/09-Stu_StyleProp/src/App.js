@@ -1,10 +1,9 @@
 import React from "react";
+import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Section from "./components/Section";
 
-import Navbar from "./components/Navbar";
-
-function App() {
+export default function App() {
   return (
     <div>
       <Navbar />
@@ -13,5 +12,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

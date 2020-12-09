@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/Navbar.css";
 
 const style = {
@@ -6,12 +5,12 @@ const style = {
   justifyContent: "flex-end"
 };
 
-function Navbar() {
+export default function Navbar() {
   return (
     <nav className="navbar" style={style}>
-      <a href="/">Welcome</a>
+      <a href="/">
+        Welcome
+      </a>
     </nav>
   );
 }
-
-export default Navbar;
