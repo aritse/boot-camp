@@ -1,10 +1,9 @@
-import React from "react";
 import "./Navbar.css";
 
 const styles = {
   card: {
     margin: 20,
-    background: "#e8eaf6"
+    background: "blue"
   },
   heading: {
     background: "#9a74db",
@@ -12,17 +11,15 @@ const styles = {
     lineHeight: 3.5,
     fontSize: "1.2rem",
     color: "white",
-    padding: "0 20px",
+    padding: "0, 20px",
     fontWeight: "bold"
   }
 };
 
-function Navbar() {
+export default function Navbar() {
   return (
     <div style={styles.card}>
-      <div style={styles.heading}>Home</div>
+      <nav style={styles.heading}>Nav</nav>
     </div>
   );
 }
-
-export default Navbar;

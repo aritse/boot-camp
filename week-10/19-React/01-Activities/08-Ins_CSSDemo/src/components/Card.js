@@ -1,5 +1,3 @@
-import React from "react";
-
 const styles = {
   card: {
     margin: 20,
@@ -16,12 +14,12 @@ const styles = {
   content: {
     padding: 20
   }
-};
+}
 
-function Card() {
+export default function Card() {
   return (
     <div style={styles.card}>
-      <div style={styles.heading}>Lorem ipsum dolor</div>
+      <div style={styles.heading}>Heading</div>
       <div style={styles.content}>
         "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
         laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
@@ -37,5 +35,3 @@ function Card() {
     </div>
   );
 }
-
-export default Card;
