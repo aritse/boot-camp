@@ -1,30 +1,23 @@
-import React from "react";
-
-function Math(props) {
+export default function Math(props) {
+  const [x, y]= [Number(props.x), Number(props.y)];
   let ans;
-  const a = Number(props.num1);
-  const b = Number(props.num2);
+
   switch (props.operator) {
     case "+":
-      ans = a + b;
+      ans = x + y;
       break;
     case "-":
-      ans = a - b;
+      ans = x - y;
       break;
     case "*":
-      ans = a * b;
-      break;
-    case "/":
-      ans = a / b;
+      ans = x * y;
       break;
     case "%":
-      ans = a % b;
+      ans = x % y;
       break;
     default:
-      ans = "invalid operator";
+      ans = "invlid";
       break;
   }
-  return <span style={{ fontSize: ans }}>{ans}</span>;
+  return <span style={{fontSize: ans}}>{ans}</span>
 }
-
-export default Math;
