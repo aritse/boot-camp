@@ -1,20 +1,15 @@
-import React from "react";
-import CardBody from "./CardBody/CardBody";
+import {useState} from "react";
+import CardBody from "./CardBody";
 
-class Counter extends React.Component {
-  state = { count: 0 };
+export default function Counter() {
+  const [count, setCount] = useState(0);
+  const incrementCount = () => setCount(count + 1);
+  const decrementCount = () => setCount(Math.max(count - 1, 0));
 
-  handleIncrement = () => this.setState({ count: this.state.count + 1 });
-  handleDecrement = () => this.setState({ count: Math.max(this.state.count - 1, 0) });
-
-  render() {
-    return (
-      <div className="card text-center">
-        <div className="card-header bg-primary text-white">Click Counter!</div>
-        <CardBody count={this.state.count} incr={this.handleIncrement} decr={this.handleDecrement} />
-      </div>
-    );
-  }
+  return (
+    <div className="card text-center">
+      <div className="card-header bg-primary text-white">Click Counter</div>
+      <CardBody count={count} incrementCount={incrementCount} decrementCount={decrementCount}/>
+    </div>
+  );
 }
-
-export default Counter;
