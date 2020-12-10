@@ -1,4 +1,3 @@
-import React from "react";
 import List from "./components/List";
 
 const groceries = [
@@ -34,8 +33,8 @@ const groceries = [
   }
 ];
 
-function App() {
-  return <List groceries={groceries.filter(item => !item.purchased)} />;
+export default function App() {
+  return (
+    <List groceries={groceries.filter(grocery => !grocery.purchased)}/>
+  );
 }
-
-export default App;
