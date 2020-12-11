@@ -1,34 +1,25 @@
-import React from "react";
+import { useState } from "react";
+import json from "./friends.json";
 import FriendCard from "./components/FriendCard";
 import Wrapper from "./components/Wrapper";
-import friends from "./friends.json";
 import "./App.css";
 
-class App extends React.Component {
-  state = { friends: friends };
+export default function App() {
+  const [friends, setFriends] = useState(json);
+  const handleClick = id => setFriends(friends.filter(f => f.id !== parseInt(id)));
 
-  handleClick = id => {
-    this.setState({ friends: this.state.friends.filter(friend => friend.id !== parseInt(id)) });
-  };
-
-  render() {
-    return (
-      <Wrapper>
-        <h1 className="title">Friends List</h1>
-        {this.state.friends.map((friend, key) => (
-          <FriendCard
-            handleClick={this.handleClick}
-            key={key}
-            name={friend.name}
-            image={friend.image}
-            occupation={friend.occupation}
-            location={friend.location}
-            id={friend.id}
-          />
-        ))}
-      </Wrapper>
-    );
-  }
+  return (
+    <Wrapper>
+      <h1 className="title">Friends List</h1>
+      {friends.map((f, key) => (
+        <FriendCard key={key}
+          id={f.id}
+          name={f.name}
+          image={f.image}
+          occupation={f.occupation}
+          location={f.location}
+          handleClick={handleClick}/>
+      ))}
+    </Wrapper>
+  )
 }
-
-export default App;

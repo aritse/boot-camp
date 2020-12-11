@@ -1,32 +1,21 @@
-import React from "react";
 import "./style.css";
 
-function FriendCard(props) {
-  const handleClick = ({ target: { id } }) => props.handleClick(id);
+export default function FriendCard(props) {
+  const onClickHandle = ({ target: { id }}) => props.handleClick(id);
 
   return (
     <div className="card">
       <div className="img-container">
-        <img alt={props.name} src={props.image} />
+        <img src={props.image} alt={props.name} />
       </div>
       <div className="content">
         <ul>
-          <li>
-            <strong>Name:</strong> {props.name}
-          </li>
-          <li>
-            <strong>Occupation:</strong> {props.occupation}
-          </li>
-          <li>
-            <strong>Address:</strong> {props.location}
-          </li>
+          <li><strong>Name: </strong>{props.name}</li>
+          <li><strong>Occupation: </strong>{props.occupation}</li>
+          <li><strong>Location: </strong>{props.location}</li>
         </ul>
       </div>
-      <span className="remove" id={props.id} onClick={handleClick}>
-        𝘅
-      </span>
+      <span className="remove" id={props.id} onClick={onClickHandle}>x</span>
     </div>
   );
 }
-
-export default FriendCard;
