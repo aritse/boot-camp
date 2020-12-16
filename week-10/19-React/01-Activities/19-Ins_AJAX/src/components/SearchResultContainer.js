@@ -1,45 +1,41 @@
-import React, { Component } from "react";
-import SearchForm from "./SearchForm";
-import ResultList from "./ResultList";
-import API from "../utils/API";
+import { Component } from 'react';
+import SearchForm from './SearchForm';
+import ResultList from './ResultList';
+import API from '../utils/API';
 
-class SearchResultContainer extends Component {
-  state = {
-    search: "",
-    results: []
-  };
+export default class SearchResultContainer extends Component {
+  state = { search: '', result: [] }
 
-  // When this component mounts, search the Giphy API for pictures of kittens
-  componentDidMount() {
-    this.searchGiphy("kittens");
+  searchGiphy = (query) => {
+    API.search(query)
+      .then(({data: {data}}) => this.setState({result: data}))
+      .catch(error => console.log(error))
   }
 
-  searchGiphy = query => {
-    API.search(query)
-      .then(({ data: { data } }) => this.setState({ results: data }))
-      .catch(err => console.log(err));
-  };
+  componentDidMount() {
+    this.searchGiphy('kitten');
+  }
 
-  handleInputChange = ({ target }) => {
-    const { name, value } = target;
-    this.setState({ [name]: value });
-  };
+  onChange = (event) => {
+    const {name, value} = event.target;
+    this.setState({[name]: value});
+  }
 
-  // When the form is submitted, search the Giphy API for `this.state.search`
-  handleFormSubmit = event => {
+  onClick = (event) => {
     event.preventDefault();
     this.searchGiphy(this.state.search);
-    this.setState({ search: "" });
-  };
+    this.setState({search: ''});
+  }
 
   render() {
     return (
       <div>
-        <SearchForm search={this.state.search} handleFormSubmit={this.handleFormSubmit} handleInputChange={this.handleInputChange} />
-        <ResultList results={this.state.results} />
+        <SearchForm
+          search={this.state.search}
+          onClick={this.onClick}
+          onChange={this.onChange}/>
+        <ResultList result={this.state.result}/>
       </div>
-    );
+    )
   }
 }
-
-export default SearchResultContainer;

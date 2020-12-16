@@ -1,15 +1,15 @@
-import React from "react";
-
-function ResultList({ results }) {
+export default function ResultList(props) {
   return (
     <ul className="list-group">
-      {results.map(image => (
-        <li className="list-group-item" key={image.id}>
-          <img alt={image.title} className="img-fluid" src={image.images.original.url} />
-        </li>
-      ))}
+      {
+        props.result.map(item =>
+          <li className="list-group-name" key={item.id}>
+            <img
+              className="img-fluid"
+              src={item.images.original.url}
+              alt={item.title}/>
+          </li>)
+      }
     </ul>
-  );
+  )
 }
-
-export default ResultList;

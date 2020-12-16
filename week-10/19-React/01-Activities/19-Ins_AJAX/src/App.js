@@ -1,8 +1,10 @@
-import React from "react";
-import SearchResultContainer from "./components/SearchResultContainer";
+import { Component } from 'react';
+import SearchResultContainer from './components/SearchResultContainer';
 
-function App() {
-  return <SearchResultContainer />;
+export default class App extends Component {
+  render() {
+    return (
+      <SearchResultContainer/>
+    )
+  }
 }
-
-export default App;
