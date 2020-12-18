@@ -1,26 +1,18 @@
-import React from "react";
-
-function SearchForm(props) {
+export default function SearchForm(props) {
   return (
-    <form>
-      <div className="form-group">
-        <label htmlFor="search">Search:</label>
-        <input
-          onChange={props.handleInputChange}
-          value={props.value}
-          name="search"
-          type="text"
-          className="form-control"
-          placeholder="Search For a Movie"
-          id="search"
-        />
-        <br />
-        <button onClick={event => props.handleFormSubmit(event)} className="btn btn-primary">
-          Search
-        </button>
-      </div>
+    <form className='form-group'>
+      <label htmlFor="search">Search</label>
+      <input
+        className='form-control'
+        placeholder='Search for a movie'
+        type='text'
+        id='search'
+        value={props.search}
+        onChange={props.onChange}
+        name="search"
+      ></input>
+      <br/>
+      <button className='btn btn-primary' onClick={props.onClick}>Search</button>
     </form>
-  );
+  )
 }
-
-export default SearchForm;

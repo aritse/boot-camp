@@ -1,67 +1,71 @@
-import React, { Component } from "react";
-import Container from "./Container";
-import Row from "./Row";
-import Col from "./Col";
-import Card from "./Card";
-import SearchForm from "./SearchForm";
-import MovieDetail from "./MovieDetail";
-import API from "../utils/API";
+import {Component} from 'react';
+import SearchForm from './SearchForm';
+import API from '../utils/API';
+import Container from './Container';
+import Row from './Row';
+import Col from './Col';
+import Card from './Card';
+import MovieDetail from './MovieDetail';
 
-class OmdbContainer extends Component {
+export default class OmdbContainer extends Component {
   state = {
-    result: {},
-    search: ""
+    search: '',
+    result: {}
   };
 
   componentDidMount() {
-    this.searchMovies("The Matrix");
+    this.searchMovie('the matrix');
   }
 
-  searchMovies = query => {
+  searchMovie = (query) => {
     API.search(query)
-      .then(res => this.setState({ result: res.data }))
-      .catch(err => console.log(err));
-  };
+      .then(response => this.setState({result: response.data}))
+      .catch(error => console.log(error));
+  }
 
-  handleInputChange = ({ target }) => {
-    const { name, value } = target;
-    this.setState({ [name]: value });
-  };
+  onChange = (event) => {
+    const {name, value} = event.target;
+    this.setState({[name]: value});
+  }
 
-  handleFormSubmit = event => {
+  onClick = (event) => {
     event.preventDefault();
-    this.searchMovies(this.state.search);
-    this.setState({ search: "" });
-  };
+    this.searchMovie(this.state.search);
+    this.setState({search: ''});
+  }
 
   render() {
     return (
       <Container>
         <Row>
-          <Col size="md-8">
-            <Card heading={this.state.result.Title || "Search for a Movie to Begin"}>
-              {this.state.result.Title ? (
-                <MovieDetail
-                  title={this.state.result.Title}
-                  src={this.state.result.Poster}
-                  director={this.state.result.Director}
-                  genre={this.state.result.Genre}
-                  released={this.state.result.Released}
-                />
-              ) : (
-                <p>No Results</p>
-              )}
+          <Col size='md-8'>
+            <Card heading={this.state.result.Title || 'Search for a movie to begin'}>
+              {
+                this.state.result.Title ? (
+                  <MovieDetail
+                    src={this.state.result.Poster}
+                    title={this.state.result.Title}
+                    genre={this.state.result.Genre}
+                    released={this.state.result.Released}
+                    director={this.state.result.Director}
+                  />
+                ) : (
+                  <p>No Result</p>
+                )
+              }
             </Card>
           </Col>
-          <Col size="md-4">
-            <Card heading="Search">
-              <SearchForm value={this.state.search} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} />
+          <Col size='md-4'>
+            <Card heading='Search'>
+              <SearchForm
+                search={this.state.search}
+                onChange={this.onChange}
+                onClick={this.onClick}
+              />
             </Card>
           </Col>
         </Row>
       </Container>
-    );
+    )
   }
 }
-
-export default OmdbContainer;
