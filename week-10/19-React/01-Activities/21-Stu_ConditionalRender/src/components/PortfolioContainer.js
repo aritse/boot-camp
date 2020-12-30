@@ -1,40 +1,30 @@
-import React, { Component } from "react";
-import NavTabs from "./NavTabs";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Blog from "./pages/Blog";
-import Contact from "./pages/Contact";
+import {Component} from 'react';
+import NavTabs from './NavTabs';
+import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Blog from './pages/Blog';
 
-class PortfolioContainer extends Component {
-  state = {
-    currentPage: "Home"
-  };
+export default class PortfolioContainer extends Component {
+  state = {currentPage: "Home"};
 
-  handlePageChange = page => {
-    this.setState({ currentPage: page });
-  };
+  handlePageChange = page => this.setState({currentPage: page});
 
   renderPage = () => {
     switch (this.state.currentPage) {
-      case "About":
-        return <About />;
-      case "Blog":
-        return <Blog />;
-      case "Contact":
-        return <Contact />;
-      default:
-        return <Home />;
+      case "Home": return <Home/>;
+      case "Contact": return <Contact/>;
+      case "Blog": return <Blog/>;
+      default: return <About/>;
     }
-  };
+  }
 
   render() {
     return (
       <div>
-        <NavTabs currentPage={this.state.currentPage} handlePageChange={this.handlePageChange} />
+        <NavTabs currentPage={this.state.currentPage} handlePageChange={this.handlePageChange}/>
         {this.renderPage()}
       </div>
-    );
+    )
   }
 }
-
-export default PortfolioContainer;

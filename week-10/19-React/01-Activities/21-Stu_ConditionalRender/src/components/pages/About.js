@@ -1,6 +1,4 @@
-import React from "react";
-
-function About() {
+export default function About() {
   return (
     <div>
       <h1>About Page</h1>
@@ -12,7 +10,5 @@ function About() {
         rhoncus mollis diam, sit amet facilisis lectus blandit at.
       </p>
     </div>
-  );
+  )
 }
-
-export default About;
