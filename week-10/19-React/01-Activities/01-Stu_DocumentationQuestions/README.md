@@ -6,10 +6,10 @@ In this activity, we will begin by installing a few helpful packages and then ex
 
 ### Part 1
 
-* Begin installing create-react-app globally by running the following command in your terminal:
-
+* Begin installing the create-react-app package globally by running the following command in your terminal:
+`npm install -g create-react-app` and `create-react-app <appname>` 2 separate commands - install the package and then generate an app.
 `npx create-react-app <appname>` where `<appname>` is what you want to name your app. Example: `npx create-react-app practiceapp`.
-NPM is a package manager, you can install a package using NPM. NPX is a tool to execute a package. It doesn't matter whether you installed a package globally or locally. NPX will temporarily install it and run it. Remember, if you want to check / run a node package quickly without installing locally or globally use NPX.
+NPM is a node JS package manager, you can install a package using NPM. NPX is a tool to execute a package. It doesn't matter whether you installed a package globally or locally. NPX will temporarily install it and run it. Remember, if you want to check / run a node package quickly without installing locally or globally use NPX.
 * npM - Manage
 * npX - Execute
 
@@ -18,14 +18,15 @@ NPM is a package manager, you can install a package using NPM. NPX is a tool to 
 * While those are installing, answer each of the following questions using the [React Doc](https://facebook.github.io/react/).
 
 1. In the previous section we installed create-react-app. What is it for?
-   * create-react-app is a comfortable env for learning React, and is the best way to start building a new single-page app in React. It sets up your dev env so that you can use the latest JS features, provides a nice dev experience, and optimizes your app for production. You’ll need to have Node and npm on your machine. create-react-app doesn’t handle backend logic or DB; it just creates a frontend build pipeline, so you can use it with any backend you want. Under the hood, it uses Babel and webpack, but you don’t need to know anything about them.
+   * create-react-app is a comfortable env for learning React, and is the best way to start building a new single-page app in React. It sets up your dev env so that you can use the latest (ES2015 through ES2019) JS features; thanks to Babel, provides a nice dev experience (Devserver), and optimizes your app for production (Webpack). You’ll need to have Node (`node -v`) and npm on your machine. create-react-app doesn’t handle backend logic or DB; it just creates a frontend build pipeline (return JSX and handle events), so you can use it with any backend you want. Under the hood, it uses Babel, Webpack, and Devserver, but you don’t need to know anything about them.
 
 2. What are some benefits of using React?
     - It is a framework for JS that enables using React comps. Because of React, one can use React comps. As such, it facilitates the overall process of writing comps. Analogy: React is like a government or an operating system. React is the framework that enables the idea of comps which make up the UI.
+    - Reconsiler (React) and renderer (ReacDOM)
     - Fast Learning Curve:
       - React _is_ more complicated to learn and use than jQuery, but this is an unfair comparison because the two aren't even in the same league. Compared to other competing JS libraries and frameworks such as Angular or Ember, React has much less code that devs need to memorize or worry about, making it much faster to learn.
     - React is comp based:
-      - With React we can build encapsulated comps that manage their own state, then compose them to make complex UIs. Since our comps are written in JS instead of HTML, we can easily pass data into our app and keep our state out of the DOM.
+      - With React we can build encapsulated comps that manage their own state, then compose them to make complex UIs. Since our comps are written in JS instead of HTML, we can easily pass data into our app and keep our state out of the DOM. DOM is HTML.
     - With React, you can "Learn Once, Write Anywhere":
       - React only tries to be the view layer of our app (the V in MVC). Because of this, it makes no assumptions about the rest of our app, and can be rendered on the client, on the server using node, even in native mobile apps with React Native.
 
