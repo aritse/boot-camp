@@ -1,8 +1,9 @@
-import React from "react";
-import JSXVariables from "./components/JSXVariables";
+import JSXVariables from './components/JSXVariables';
 
-function App() {
-  return <JSXVariables />;
+const App = () => {
+  return (
+    <JSXVariables />
+  )
 }
 
 export default App;
