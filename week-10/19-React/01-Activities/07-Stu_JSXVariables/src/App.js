@@ -1,5 +1,5 @@
-import JSXVariables from "./components/JSXVariables";
+import JSXVariables from './components/JSXVariables';
 
-export default function App() {
-  return (<JSXVariables/>);
-}
+const App = () => <JSXVariables />
+
+export default App;
