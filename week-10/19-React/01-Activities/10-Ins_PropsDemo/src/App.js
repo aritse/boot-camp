@@ -1,5 +1,4 @@
-import Alert from "./components/Alert";
+import Alert from './components/Alert';
 
-export default function App() {
-  return <Alert type="danger">Invalid user id or password</Alert>
-}
+const App = () => <Alert type='danger'>Invalide user id or password</Alert>;
+export default App;

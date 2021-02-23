@@ -1,3 +1,2 @@
-export default function Alert(props) {
-  return <div className={`alert alert-${props.type || "success"}`} role="alert">{props.children}</div>
-}
+const Alert = props => <div className={`alert alert-${props.type || 'success'}`}>{props.children}</div>
+export default Alert;
