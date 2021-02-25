@@ -1,5 +1,5 @@
-import "./style.css";
+import './style.css';
 
-export default function Wrapper(props) {
-  return <div className="wrapper">{props.children}</div>
-}
+const Wrapper = props => <div className='wrapper'>{props.children}</div>;
+
+export default Wrapper;

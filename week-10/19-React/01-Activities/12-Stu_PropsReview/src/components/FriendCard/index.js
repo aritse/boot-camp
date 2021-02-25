@@ -1,18 +1,20 @@
-import "./style.css";
+import './style.css';
 
-export default function FriendCard(props) {
-  return (
-    <div className="card">
-      <div className="img-container">
-        <img alt={props.name} src={props.image}></img>
-      </div>
-      <div className="content">
-        <ul>
-          <li><strong>Name:</strong> {props.name}</li>
-          <li><strong>Occupation:</strong> {props.occupation}</li>
-          <li><strong>Location:</strong> {props.location}</li>
-        </ul>
-      </div>
-    </div>
-  );
-}
+const FriendCard = ({image, name, location, occupation}) => {
+    return (
+        <div className='card'>
+            <div className='img-container'>
+                <img src={image} alt={name}></img>
+            </div>
+            <div className='content'>
+                <ul>
+                    <li><strong>Name: </strong>{name}</li>
+                    <li><strong>Location: </strong>{location}</li>
+                    <li><strong>Occupation: </strong>{occupation}</li>
+                </ul>
+            </div>
+        </div>
+    )
+};
+
+export default FriendCard;
