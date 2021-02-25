@@ -1,23 +1,25 @@
-export default function Math(props) {
-  const [x, y]= [Number(props.x), Number(props.y)];
+export default function Math({ a, op, b }) {
+  const [x, y] = [Number(a), Number(b)];
   let ans;
-
-  switch (props.operator) {
-    case "+":
+  switch (op) {
+    case '+':
       ans = x + y;
       break;
-    case "-":
+    case '-':
       ans = x - y;
-      break;
-    case "*":
+     break;
+    case '*':
       ans = x * y;
       break;
-    case "%":
+    case '%':
       ans = x % y;
       break;
     default:
-      ans = "invlid";
+      ans = 'invalid';
       break;
   }
-  return <span style={{fontSize: ans}}>{ans}</span>
+
+  return (
+    <span style={{ fontSize: ans }}>{ans}</span>
+  )
 }
