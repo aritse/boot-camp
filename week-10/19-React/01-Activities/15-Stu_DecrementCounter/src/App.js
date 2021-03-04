@@ -1,4 +1,7 @@
-import Counter from "./components/Counter";
+import Counter from './components/Counter';
 
-const App = () => <Counter/>;
-export default App;
+export default function App() {
+    return (
+        <Counter />
+    )
+}
