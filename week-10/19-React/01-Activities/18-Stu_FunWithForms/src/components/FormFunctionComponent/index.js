@@ -1,37 +1,45 @@
-import {useState} from "react";
-import "./style.css";
+import { useState } from 'react';
+import './style.css';
 
-export default function FormFunctional() {
-  const [user, setUser] = useState({firstName: "", lastName: "", password: ""});
+export default function FormFunctionComponent() {
+  const [user, setUser] = useState({
+    firstName: '',
+    lastName: '',
+    password: '',
+  });
 
-  const onChange = ({target}) => {
-    const {name, value} = target;
-    setUser({...user, [name]: value});
+  const onChange = ({ target }) => {
+    const { name, value } = target;
+    setUser({ ...user, [name]: value });
   };
 
-  const onSubmit = (event) => {
+  const onFormSubmit = (event) => {
     event.preventDefault();
     if (user.firstName && user.lastName) {
       if (user.password.length < 6) {
-        alert(`Choose longer password, ${user.firstName} ${user.lastName}`);
+        alert(`Choose a longer password, ${user.firstName} ${user.lastName}`);
       } else {
         alert(`Welcome, ${user.firstName} ${user.lastName}`);
-        setUser({firstName: "", lastName: "", password: ""});
+        setUser({
+          firstName: '',
+          lastName: '',
+          password: '',
+        });
       }
     } else {
-      alert("Enter both first and last names");
+      alert('Enter both first and last name');
     }
   };
 
   return (
     <div>
       <p>Hello {user.firstName} {user.lastName}</p>
-      <form onSubmit={onSubmit} className="form">
-        <input value={user.firstName} type="text" placeholder="First Name" onChange={onChange} name="firstName" />
-        <input value={user.lastName} type="text" placeholder="Last Name" onChange={onChange} name="lastName" />
-        <input value={user.password} type="password" placeholder="Password" onChange={onChange} name="password" />
+      <form onSubmit={onFormSubmit} className='form'>
+        <input type='text' name='firstName' placeholder='First Name' value={user.firstName} onChange={onChange}></input>
+        <input type='text' name='lastName' placeholder='Last Name' value={user.lastName} onChange={onChange}></input>
+        <input type='password' name='password' placeholder='Password' value={user.password} onChange={onChange}></input>
         <button>Submit</button>
       </form>
     </div>
-  );
+  )
 }

@@ -1,14 +1,11 @@
-import {Component} from "react";
-import FormFunctionComponent from "./components/FormFunctionComponent";
-import FormClassComponent from "./components/FormClassComponent";
+import FormFunctionComponent from './components/FormFunctionComponent';
+import FormClassComponent from './components/FormClassComponent';
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <FormFunctionComponent/>
-        <FormClassComponent/>
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <div>
+      <FormFunctionComponent />
+      <FormClassComponent />
+    </div>
+  )
 }
