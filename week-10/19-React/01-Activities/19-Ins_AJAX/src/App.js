@@ -1,10 +1,10 @@
-import { Component } from 'react';
-import SearchResultContainer from './components/SearchResultContainer';
+import React from 'react';
+import Container from './components/Container';
 
-export default class App extends Component {
+class App extends React.Component {
   render() {
-    return (
-      <SearchResultContainer/>
-    )
+    return <Container />
   }
 }
+
+export default App;
