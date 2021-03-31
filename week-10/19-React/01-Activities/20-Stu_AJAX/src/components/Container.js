@@ -1,3 +1,7 @@
-export default function Container(props) {
-  return <div className={`container${props.fluid ? '-fluid' : ''}`}>{props.children}</div>
+export default function Container({ children, fluid }) {
+  return (
+    <div className={`container${fluid ? '-fluid' : ''}`}>
+      {children}
+    </div>
+  )
 }

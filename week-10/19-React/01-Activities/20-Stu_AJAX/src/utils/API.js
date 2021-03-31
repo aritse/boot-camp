@@ -1,8 +1,6 @@
 import axios from 'axios';
-const URL = 'https://www.omdbapi.com/?t=';
-const KEY = '&apikey=trilogy';
-const API = {
-  search: (query) => axios.get(URL + query + KEY)
-};
 
-export default API;
+const api = {
+  search: (term) => axios.get(`http://www.omdbapi.com/?apikey=trilogy&t=${term}`)
+};
+export default api;

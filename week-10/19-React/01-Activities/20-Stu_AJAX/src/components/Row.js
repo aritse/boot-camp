@@ -1,3 +1,7 @@
-export default function Row(props) {
-  return <div className={`row${props.fluid ? '-fluid' : ''}`}>{props.children}</div>
+export default function Row({ children, fluid }) {
+  return (
+    <div className={`row${fluid ? '-fluid' : ''}`}>
+      {children}
+    </div>
+  )
 }

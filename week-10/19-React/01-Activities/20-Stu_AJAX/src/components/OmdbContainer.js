@@ -1,71 +1,74 @@
-import {Component} from 'react';
-import SearchForm from './SearchForm';
-import API from '../utils/API';
+import React from "react";
 import Container from './Container';
 import Row from './Row';
 import Col from './Col';
 import Card from './Card';
 import MovieDetail from './MovieDetail';
+import SearchForm from './SearchForm';
+import api from '../utils/API';
 
-export default class OmdbContainer extends Component {
-  state = {
-    search: '',
-    result: {}
-  };
+export default class OmdbContainer extends React.Component {
+    state = {
+        term: '',
+        movie: {}
+    };
 
-  componentDidMount() {
-    this.searchMovie('the matrix');
-  }
+    search = (term) => {
+        api.search(term)
+            .then(response => this.setState({ movie: response.data }))
+            .catch(error => console.log(error));
+    };
 
-  searchMovie = (query) => {
-    API.search(query)
-      .then(response => this.setState({result: response.data}))
-      .catch(error => console.log(error));
-  }
+    componentDidMount() {
+        this.search('The Matrix');
+    }
 
-  onChange = (event) => {
-    const {name, value} = event.target;
-    this.setState({[name]: value});
-  }
+    onInputChange = (event) => {
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
+    };
 
-  onClick = (event) => {
-    event.preventDefault();
-    this.searchMovie(this.state.search);
-    this.setState({search: ''});
-  }
+    onFormSubmit = (event) => {
+        event.preventDefault();
+        this.search(this.state.term);
+        this.setState({ term: '' });
+    };
 
-  render() {
-    return (
-      <Container>
-        <Row>
-          <Col size='md-8'>
-            <Card heading={this.state.result.Title || 'Search for a movie to begin'}>
-              {
-                this.state.result.Title ? (
-                  <MovieDetail
-                    src={this.state.result.Poster}
-                    title={this.state.result.Title}
-                    genre={this.state.result.Genre}
-                    released={this.state.result.Released}
-                    director={this.state.result.Director}
-                  />
-                ) : (
-                  <p>No Result</p>
-                )
-              }
-            </Card>
-          </Col>
-          <Col size='md-4'>
-            <Card heading='Search'>
-              <SearchForm
-                search={this.state.search}
-                onChange={this.onChange}
-                onClick={this.onClick}
-              />
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-    )
-  }
+    render() {
+        const { Title, Actors, Director, Genre, Released, Poster } = this.state.movie;
+
+        return (
+            <Container fluid={true}>
+                <Row>
+                    <Col size='col-8'>
+                        <Card heading={this.state.movie.Title || 'Search a movie'}>
+                            {
+                                Title ? (
+                                    <MovieDetail
+                                    title={Title}
+                                    actors={Actors}
+                                    director={Director}
+                                    genre={Genre}
+                                    year={Released}
+                                    src={Poster}
+                                />    
+                                ) : (
+                                    <p>No Result</p>
+                                )
+                            }
+                        </Card>
+                    </Col>
+                    <Col size='col-4'>
+                        <Card heading='Search'>
+                            <SearchForm
+                                term={this.state.term}
+                                onInputChange={this.onInputChange}
+                                onFormSubmit={this.onFormSubmit}
+                            />
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
+        )
+    }
 }

@@ -1,6 +1,7 @@
-export default function Col(props) {
-  const size = props.size.split(' ').map(size => 'col-' + size).join(' ');
+export default function Col({ children, size }) {
   return (
-    <div className={size}>{props.children}</div>
+    <div className={size}>
+      {children}
+    </div>
   )
-}
+};
